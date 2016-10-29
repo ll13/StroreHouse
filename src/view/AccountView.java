@@ -27,13 +27,7 @@ public class AccountView extends JFrame {
 	String occuption = "";
 	Package Package=new Package();
 
-	public void run(ClientController ActionListener) {
-		guidenceBox = Box.createVerticalBox();
-		operationBox = Box.createVerticalBox();
-		contentBox = Box.createVerticalBox();
-		tableBox = Box.createVerticalBox();
-		basebox = Box.createHorizontalBox();
-
+	public void addListener(ClientController ActionListener){
 		login = new JButton("登录");
 		stock = new JButton("库存");
 		commodity = new JButton("商品");
@@ -49,6 +43,29 @@ public class AccountView extends JFrame {
 		export.addActionListener(ActionListener);
 		customer.addActionListener(ActionListener);
 		account.addActionListener(ActionListener);
+
+
+		ACCOUNT_IN = new JButton("创建收款单");
+		ACCOUNT_OUT = new JButton("创建付款单");
+		ACCOUNT_ALL = new JButton("查看总账目");
+		ACCOUNT_DET = new JButton("查看具体账目");
+		ACCOUNT_INI = new JButton("初始化账目");
+
+		ACCOUNT_IN.addActionListener(ActionListener);
+		ACCOUNT_OUT.addActionListener(ActionListener);
+		ACCOUNT_ALL.addActionListener(ActionListener);
+		ACCOUNT_DET.addActionListener(ActionListener);
+		ACCOUNT_INI.addActionListener(ActionListener);
+
+	}
+	
+	public void run() {
+		guidenceBox = Box.createVerticalBox();
+		operationBox = Box.createVerticalBox();
+		contentBox = Box.createVerticalBox();
+		tableBox = Box.createVerticalBox();
+		basebox = Box.createHorizontalBox();
+
 
 		guidenceBox.add(Box.createVerticalStrut(8));
 		guidenceBox.add(login);
@@ -83,18 +100,6 @@ public class AccountView extends JFrame {
 		tableBox.add(Box.createVerticalStrut(8));
 		tableBox.add(scrollPane_detail);
 		tableBox.add(Box.createVerticalStrut(8));
-
-		ACCOUNT_IN = new JButton("创建收款单");
-		ACCOUNT_OUT = new JButton("创建付款单");
-		ACCOUNT_ALL = new JButton("查看总账目");
-		ACCOUNT_DET = new JButton("查看具体账目");
-		ACCOUNT_INI = new JButton("初始化账目");
-
-		ACCOUNT_IN.addActionListener(ActionListener);
-		ACCOUNT_OUT.addActionListener(ActionListener);
-		ACCOUNT_ALL.addActionListener(ActionListener);
-		ACCOUNT_DET.addActionListener(ActionListener);
-		ACCOUNT_INI.addActionListener(ActionListener);
 
 		ACCOUNT_CUSTOMER = new JTextField(15);
 		ACCOUNT_IN_MONEY = new JTextField(15);

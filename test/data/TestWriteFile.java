@@ -1,10 +1,10 @@
 package data;
 
 import org.junit.Assert;
-import org.junit.Test;
+
 
 import data.WriteFile;
-import vo.Package;
+
 
 public class TestWriteFile {
 	WriteFile w = new WriteFile();

@@ -1,4 +1,5 @@
 package view;
+
 import javax.swing.Box;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -9,102 +10,103 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import vo.Package;
 import controller.ClientController;
-public class StockView extends JFrame{
+
+public class StockView extends JFrame {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	Box tableBox, operationBox, guidenceBox,contentBox,basebox;
-	JButton login,stock,commodity,Import,export,customer,account;
+	Box tableBox, operationBox, guidenceBox, contentBox, basebox;
+	JButton login, stock, commodity, Import, export, customer, account;
 	JButton STOCK_SHO;
-	String name="";
-	String occuption="";
-	Package Package=new Package();
-	
-	public void run(ClientController ActionListener){
-		guidenceBox=Box.createVerticalBox();
-		operationBox=Box.createVerticalBox();
-		contentBox=Box.createVerticalBox();
-		tableBox=Box.createVerticalBox();
-		basebox=Box.createHorizontalBox();
+	String name = "";
+	String occuption = "";
+	Package Package = new Package();
+
+	public void addListener(ClientController ActionListener) {
+		login = new JButton("登录");
+		stock = new JButton("库存");
+		commodity = new JButton("商品");
+		Import = new JButton("进货");
+		export = new JButton("销售");
+		customer = new JButton("客户");
+		account = new JButton("账目");
+
+		login.addActionListener(ActionListener);
+		commodity.addActionListener(ActionListener);
+		stock.addActionListener(ActionListener);
+		Import.addActionListener(ActionListener);
+		export.addActionListener(ActionListener);
+		customer.addActionListener(ActionListener);
+		account.addActionListener(ActionListener);
 		
-		login=new JButton("登录");
-		 stock=new JButton("库存");
-		 commodity=new JButton("商品");
-		 Import=new JButton("进货");
-		 export=new JButton("销售");
-		 customer=new JButton("客户");
-		 account=new JButton("账目");
-		 
-		 login.addActionListener(ActionListener);
-		 commodity.addActionListener(ActionListener);
-		 stock.addActionListener(ActionListener);
-		 Import.addActionListener(ActionListener);
-		 export.addActionListener(ActionListener);
-		 customer.addActionListener(ActionListener);
-		 account.addActionListener(ActionListener);
-		
-		 guidenceBox.add(Box.createVerticalStrut(8));
-			guidenceBox.add(login);
-			guidenceBox.add(Box.createVerticalStrut(8));
-			guidenceBox.add(commodity);
-			guidenceBox.add(Box.createVerticalStrut(8));
-			guidenceBox.add(stock);
-			guidenceBox.add(Box.createVerticalStrut(8));
-			guidenceBox.add(Import);
-			guidenceBox.add(Box.createVerticalStrut(8));
-			guidenceBox.add(export);
-			guidenceBox.add(Box.createVerticalStrut(8));
-			guidenceBox.add(customer);
-			guidenceBox.add(Box.createVerticalStrut(8));
-			guidenceBox.add(account);
-			guidenceBox.add(Box.createVerticalStrut(8));
-		
-		String[][] data=Package.getStockSet();
-               
-          String[] line={"名称","型号",
-        		  "进货数量","进货平均单价","进货总价",
-        		  "销售数量","销售平均单价","销售总价",
-        		  "库存数量","库存平均单价","库存总价"};
-          
-          
-        JTable table=new JTable(data,line);
-        table.setPreferredScrollableViewportSize(new Dimension(900,200));
-        JScrollPane scrollPane=new JScrollPane(table);   
+		STOCK_SHO = new JButton("显示");
+		STOCK_SHO.addActionListener(ActionListener);
+	}
+
+	public void run() {
+		guidenceBox = Box.createVerticalBox();
+		operationBox = Box.createVerticalBox();
+		contentBox = Box.createVerticalBox();
+		tableBox = Box.createVerticalBox();
+		basebox = Box.createHorizontalBox();
+
+
+		guidenceBox.add(Box.createVerticalStrut(8));
+		guidenceBox.add(login);
+		guidenceBox.add(Box.createVerticalStrut(8));
+		guidenceBox.add(commodity);
+		guidenceBox.add(Box.createVerticalStrut(8));
+		guidenceBox.add(stock);
+		guidenceBox.add(Box.createVerticalStrut(8));
+		guidenceBox.add(Import);
+		guidenceBox.add(Box.createVerticalStrut(8));
+		guidenceBox.add(export);
+		guidenceBox.add(Box.createVerticalStrut(8));
+		guidenceBox.add(customer);
+		guidenceBox.add(Box.createVerticalStrut(8));
+		guidenceBox.add(account);
+		guidenceBox.add(Box.createVerticalStrut(8));
+
+		String[][] data = Package.getStockSet();
+
+		String[] line = { "名称", "型号", "进货数量", "进货平均单价", "进货总价", "销售数量", "销售平均单价", "销售总价", "库存数量", "库存平均单价", "库存总价" };
+
+		JTable table = new JTable(data, line);
+		table.setPreferredScrollableViewportSize(new Dimension(900, 200));
+		JScrollPane scrollPane = new JScrollPane(table);
 		tableBox.add(Box.createVerticalStrut(8));
 		tableBox.add(scrollPane);
 		tableBox.add(Box.createVerticalStrut(8));
+
 		
-		STOCK_SHO=new JButton("显示");
 		operationBox.add(Box.createHorizontalStrut(8));
 		operationBox.add(STOCK_SHO);
 		operationBox.add(Box.createHorizontalStrut(8));
-		
-		STOCK_SHO.addActionListener(ActionListener);
-		
+
+	
+
 		contentBox.add(Box.createVerticalStrut(8));
 		contentBox.add(tableBox);
 		contentBox.add(Box.createVerticalStrut(8));
 		contentBox.add(operationBox);
 		contentBox.add(Box.createVerticalStrut(8));
-		
+
 		basebox.add(Box.createHorizontalStrut(8));
 		basebox.add(guidenceBox);
 		basebox.add(Box.createHorizontalStrut(8));
 		basebox.add(contentBox);
 		basebox.add(Box.createHorizontalStrut(8));
-		
-		JLabel welcome=new JLabel("welcome"+" "+name+" "+occuption);
-		add(welcome, BorderLayout.NORTH);
-        add(basebox, BorderLayout.CENTER);		
-        this.setSize(600,400);
-		setTitle("库存");
-	    setVisible(true);
-        setLocation(400, 250);
-		
-	}
 
-	
+		JLabel welcome = new JLabel("welcome" + " " + name + " " + occuption);
+		add(welcome, BorderLayout.NORTH);
+		add(basebox, BorderLayout.CENTER);
+		this.setSize(600, 400);
+		setTitle("库存");
+		setVisible(true);
+		setLocation(400, 250);
+
+	}
 
 	public JButton getLogin() {
 		return login;
@@ -186,23 +188,12 @@ public class StockView extends JFrame{
 		this.occuption = occuption;
 	}
 
-
-
 	public Package getPackage() {
 		return Package;
 	}
 
-
-
 	public void setPackage(Package package1) {
 		Package = package1;
 	}
-	
-	
-	
-	
-	
-	
-	
-}
 
+}

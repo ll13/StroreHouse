@@ -1,4 +1,5 @@
 package view;
+
 import javax.swing.Box;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -11,94 +12,97 @@ import javax.swing.JTextField;
 
 import controller.ClientController;
 import vo.Package;
-public class CustomerView extends JFrame{
+
+public class CustomerView extends JFrame {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	Box tableBox, operationBox, guidenceBox,contentBox,basebox;
-	Box box1,box2,box3,box4;
-	JButton login,stock,commodity,Import,export,customer,account;
-	JTextField CUSTOMER_ADD_NAME,CUSTOMER_ADD_TEL,CUSTOMER_DEL_NAME,
-	CUSTOMER_UPD_NAME,CUSTOMER_UPD_TEL,CUSTOMER_FIN_NAME;
-	JButton CUSTOMER_ADD,CUSTOMER_DEL,CUSTOMER_UPD,CUSTOMER_FIN,CUSTOMER_SHO;
-	String name="";
-	String occuption="";
-	Package Package=new Package();
-	
-	public void run(ClientController ActionListener){
-		guidenceBox=Box.createVerticalBox();
-		operationBox=Box.createVerticalBox();
-		contentBox=Box.createVerticalBox();
-		tableBox=Box.createVerticalBox();
-		basebox=Box.createHorizontalBox();
-		
-		 login=new JButton("登录");
-		 stock=new JButton("库存");
-		 commodity=new JButton("商品");
-		 Import=new JButton("进货");
-		 export=new JButton("销售");
-		 customer=new JButton("客户");
-		 account=new JButton("账目");
-		
-		 login.addActionListener(ActionListener);
-		 commodity.addActionListener(ActionListener);
-		 stock.addActionListener(ActionListener);
-		 Import.addActionListener(ActionListener);
-		 export.addActionListener(ActionListener);
-		 customer.addActionListener(ActionListener);
-		 account.addActionListener(ActionListener);
-		
-		 guidenceBox.add(Box.createVerticalStrut(8));
-			guidenceBox.add(login);
-			guidenceBox.add(Box.createVerticalStrut(8));
-			guidenceBox.add(commodity);
-			guidenceBox.add(Box.createVerticalStrut(8));
-			guidenceBox.add(stock);
-			guidenceBox.add(Box.createVerticalStrut(8));
-			guidenceBox.add(Import);
-			guidenceBox.add(Box.createVerticalStrut(8));
-			guidenceBox.add(export);
-			guidenceBox.add(Box.createVerticalStrut(8));
-			guidenceBox.add(customer);
-			guidenceBox.add(Box.createVerticalStrut(8));
-			guidenceBox.add(account);
-			guidenceBox.add(Box.createVerticalStrut(8));
-		
-		Object[][] data=Package.getCustomerSet();
-                
-          String[] line={"客户名称","联系方式","应收金额","应付金额","合计"};
-        JTable table=new JTable(data,line);
-        table.setPreferredScrollableViewportSize(new Dimension(200,200));
-        JScrollPane scrollPane=new JScrollPane(table);   
-		tableBox.add(Box.createVerticalStrut(8));
-		tableBox.add(scrollPane);
-		tableBox.add(Box.createVerticalStrut(8));
-		
-		CUSTOMER_ADD=new JButton("增加");
-		CUSTOMER_DEL=new JButton("删除");
-		CUSTOMER_UPD=new JButton("更新");
-		CUSTOMER_FIN=new JButton("查找");
-		CUSTOMER_SHO=new JButton("显示");
-		
+	Box tableBox, operationBox, guidenceBox, contentBox, basebox;
+	Box box1, box2, box3, box4;
+	JButton login, stock, commodity, Import, export, customer, account;
+	JTextField CUSTOMER_ADD_NAME, CUSTOMER_ADD_TEL, CUSTOMER_DEL_NAME, CUSTOMER_UPD_NAME, CUSTOMER_UPD_TEL,
+			CUSTOMER_FIN_NAME;
+	JButton CUSTOMER_ADD, CUSTOMER_DEL, CUSTOMER_UPD, CUSTOMER_FIN, CUSTOMER_SHO;
+	String name = "";
+	String occuption = "";
+	Package Package = new Package();
+
+	public void addListener(ClientController ActionListener) {
+		login = new JButton("登录");
+		stock = new JButton("库存");
+		commodity = new JButton("商品");
+		Import = new JButton("进货");
+		export = new JButton("销售");
+		customer = new JButton("客户");
+		account = new JButton("账目");
+
+		login.addActionListener(ActionListener);
+		commodity.addActionListener(ActionListener);
+		stock.addActionListener(ActionListener);
+		Import.addActionListener(ActionListener);
+		export.addActionListener(ActionListener);
+		customer.addActionListener(ActionListener);
+		account.addActionListener(ActionListener);
+
+		CUSTOMER_ADD = new JButton("增加");
+		CUSTOMER_DEL = new JButton("删除");
+		CUSTOMER_UPD = new JButton("更新");
+		CUSTOMER_FIN = new JButton("查找");
+		CUSTOMER_SHO = new JButton("显示");
+
 		CUSTOMER_ADD.addActionListener(ActionListener);
 		CUSTOMER_DEL.addActionListener(ActionListener);
 		CUSTOMER_UPD.addActionListener(ActionListener);
 		CUSTOMER_FIN.addActionListener(ActionListener);
 		CUSTOMER_SHO.addActionListener(ActionListener);
-		
-		CUSTOMER_ADD_NAME=new JTextField(15);
-		CUSTOMER_ADD_TEL=new JTextField(15);
-		CUSTOMER_DEL_NAME=new JTextField(15);
-		CUSTOMER_UPD_NAME=new JTextField(15);
-		CUSTOMER_UPD_TEL=new JTextField(15);
-		CUSTOMER_FIN_NAME=new JTextField(15);
-		
-		box1=Box.createHorizontalBox();
-		box2=Box.createHorizontalBox();
-		box3=Box.createHorizontalBox();
-		box4=Box.createHorizontalBox();
-		
+	}
+
+	public void run() {
+		guidenceBox = Box.createVerticalBox();
+		operationBox = Box.createVerticalBox();
+		contentBox = Box.createVerticalBox();
+		tableBox = Box.createVerticalBox();
+		basebox = Box.createHorizontalBox();
+
+		guidenceBox.add(Box.createVerticalStrut(8));
+		guidenceBox.add(login);
+		guidenceBox.add(Box.createVerticalStrut(8));
+		guidenceBox.add(commodity);
+		guidenceBox.add(Box.createVerticalStrut(8));
+		guidenceBox.add(stock);
+		guidenceBox.add(Box.createVerticalStrut(8));
+		guidenceBox.add(Import);
+		guidenceBox.add(Box.createVerticalStrut(8));
+		guidenceBox.add(export);
+		guidenceBox.add(Box.createVerticalStrut(8));
+		guidenceBox.add(customer);
+		guidenceBox.add(Box.createVerticalStrut(8));
+		guidenceBox.add(account);
+		guidenceBox.add(Box.createVerticalStrut(8));
+
+		Object[][] data = Package.getCustomerSet();
+
+		String[] line = { "客户名称", "联系方式", "应收金额", "应付金额", "合计" };
+		JTable table = new JTable(data, line);
+		table.setPreferredScrollableViewportSize(new Dimension(200, 200));
+		JScrollPane scrollPane = new JScrollPane(table);
+		tableBox.add(Box.createVerticalStrut(8));
+		tableBox.add(scrollPane);
+		tableBox.add(Box.createVerticalStrut(8));
+
+		CUSTOMER_ADD_NAME = new JTextField(15);
+		CUSTOMER_ADD_TEL = new JTextField(15);
+		CUSTOMER_DEL_NAME = new JTextField(15);
+		CUSTOMER_UPD_NAME = new JTextField(15);
+		CUSTOMER_UPD_TEL = new JTextField(15);
+		CUSTOMER_FIN_NAME = new JTextField(15);
+
+		box1 = Box.createHorizontalBox();
+		box2 = Box.createHorizontalBox();
+		box3 = Box.createHorizontalBox();
+		box4 = Box.createHorizontalBox();
+
 		box1.add(Box.createHorizontalStrut(8));
 		box1.add(CUSTOMER_ADD);
 		box1.add(new JLabel("客户名称"));
@@ -106,7 +110,7 @@ public class CustomerView extends JFrame{
 		box1.add(new JLabel("联系方式"));
 		box1.add(CUSTOMER_ADD_TEL);
 		box1.add(Box.createHorizontalStrut(8));
-		
+
 		box2.add(Box.createHorizontalStrut(8));
 		box2.add(CUSTOMER_UPD);
 		box2.add(new JLabel("客户名称"));
@@ -114,7 +118,7 @@ public class CustomerView extends JFrame{
 		box2.add(new JLabel("联系方式"));
 		box2.add(CUSTOMER_UPD_TEL);
 		box2.add(Box.createHorizontalStrut(8));
-		
+
 		box3.add(Box.createHorizontalStrut(8));
 		box3.add(CUSTOMER_DEL);
 		box3.add(new JLabel("客户名称"));
@@ -122,38 +126,38 @@ public class CustomerView extends JFrame{
 		box3.add(Box.createHorizontalStrut(8));
 		box3.add(CUSTOMER_SHO);
 		box3.add(Box.createHorizontalStrut(8));
-		
+
 		box4.add(Box.createHorizontalStrut(8));
 		box4.add(CUSTOMER_FIN);
 		box4.add(new JLabel("客户名称"));
 		box4.add(CUSTOMER_FIN_NAME);
 		box4.add(Box.createHorizontalStrut(8));
-		
+
 		operationBox.add(box1);
 		operationBox.add(box2);
 		operationBox.add(box3);
 		operationBox.add(box4);
-		
+
 		contentBox.add(Box.createVerticalStrut(8));
 		contentBox.add(tableBox);
 		contentBox.add(Box.createVerticalStrut(8));
 		contentBox.add(operationBox);
 		contentBox.add(Box.createVerticalStrut(8));
-		
+
 		basebox.add(Box.createHorizontalStrut(8));
 		basebox.add(guidenceBox);
 		basebox.add(Box.createHorizontalStrut(8));
 		basebox.add(contentBox);
 		basebox.add(Box.createHorizontalStrut(8));
-		
-		JLabel welcome=new JLabel("welcome"+" "+name+" "+occuption);
+
+		JLabel welcome = new JLabel("welcome" + " " + name + " " + occuption);
 		add(welcome, BorderLayout.NORTH);
-        add(basebox, BorderLayout.CENTER);		
-        this.setSize(600,400);	
+		add(basebox, BorderLayout.CENTER);
+		this.setSize(600, 400);
 		setTitle("客户");
-	    setVisible(true);
-        setLocation(400, 250);
-		
+		setVisible(true);
+		setLocation(400, 250);
+
 	}
 
 	public JButton getLogin() {
@@ -323,13 +327,5 @@ public class CustomerView extends JFrame{
 	public void setPackage(Package package1) {
 		Package = package1;
 	}
-	
-	
-	
-	
-	
-	
+
 }
-
-
-

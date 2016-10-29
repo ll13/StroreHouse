@@ -1,4 +1,5 @@
 package view;
+
 import javax.swing.Box;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -10,46 +11,59 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import vo.Package;
 import controller.ClientController;
-public class ImportView extends JFrame{
+
+public class ImportView extends JFrame {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	Box tableBox, operationBox, guidenceBox,contentBox,basebox;
-	Box box1,box2,box3;
-	JButton login,stock,commodity,Import,export,customer,account;
-	JButton IMPORT_ADD,IMPORT_DEL,IMPORT_SHO;
-	JTextField IMPORT_ADD_CUSTOMER,IMPORT_ADD_COMMODITY,IMPORT_ADD_COMTYPE,IMPORT_ADD_NUMBER,
-	           IMPORT_ADD_PRICE,IMPORT_DEL_CUSTOMER,IMPORT_DEL_COMMODITY,IMPORT_DEL_COMTYPE,
-	           IMPORT_DEL_NUMBER,IMPORT_DEL_PRICE,IMPORT_SHO_BEGINDATE,IMPORT_SHO_ENDDATE;
-	
-	String name="";
-	String occuption="";
-	Package Package=new Package();
-	
-	public void run(ClientController ActionListener){
-		guidenceBox=Box.createVerticalBox();
-		operationBox=Box.createVerticalBox();
-		contentBox=Box.createVerticalBox();
-		tableBox=Box.createVerticalBox();
-		basebox=Box.createHorizontalBox();
+	Box tableBox, operationBox, guidenceBox, contentBox, basebox;
+	Box box1, box2, box3;
+	JButton login, stock, commodity, Import, export, customer, account;
+	JButton IMPORT_ADD, IMPORT_DEL, IMPORT_SHO;
+	JTextField IMPORT_ADD_CUSTOMER, IMPORT_ADD_COMMODITY, IMPORT_ADD_COMTYPE, IMPORT_ADD_NUMBER, IMPORT_ADD_PRICE,
+			IMPORT_DEL_CUSTOMER, IMPORT_DEL_COMMODITY, IMPORT_DEL_COMTYPE, IMPORT_DEL_NUMBER, IMPORT_DEL_PRICE,
+			IMPORT_SHO_BEGINDATE, IMPORT_SHO_ENDDATE;
+
+	String name = "";
+	String occuption = "";
+	Package Package = new Package();
+
+	public void addListener(ClientController ActionListener) {
+		login = new JButton("登录");
+		stock = new JButton("库存");
+		commodity = new JButton("商品");
+		Import = new JButton("进货");
+		export = new JButton("销售");
+		customer = new JButton("客户");
+		account = new JButton("账目");
+
+		login.addActionListener(ActionListener);
+		commodity.addActionListener(ActionListener);
+		stock.addActionListener(ActionListener);
+		Import.addActionListener(ActionListener);
+		export.addActionListener(ActionListener);
+		customer.addActionListener(ActionListener);
+		account.addActionListener(ActionListener);
+
+		IMPORT_ADD = new JButton("创建进货单");
+		IMPORT_DEL = new JButton("创建退货单");
+		IMPORT_SHO = new JButton("查看单据");
+
+		IMPORT_ADD.addActionListener(ActionListener);
+		IMPORT_DEL.addActionListener(ActionListener);
+		IMPORT_SHO.addActionListener(ActionListener);
+	}
+
+	public void run() {
+		guidenceBox = Box.createVerticalBox();
+		operationBox = Box.createVerticalBox();
+		contentBox = Box.createVerticalBox();
+		tableBox = Box.createVerticalBox();
+		basebox = Box.createHorizontalBox();
+
 		
-		login=new JButton("登录");
-		 stock=new JButton("库存");
-		 commodity=new JButton("商品");
-		 Import=new JButton("进货");
-		 export=new JButton("销售");
-		 customer=new JButton("客户");
-		 account=new JButton("账目");
-		
-		 login.addActionListener(ActionListener);
-		 commodity.addActionListener(ActionListener);
-		 stock.addActionListener(ActionListener);
-		 Import.addActionListener(ActionListener);
-		 export.addActionListener(ActionListener);
-		 customer.addActionListener(ActionListener);
-		 account.addActionListener(ActionListener);
-		 
+
 		guidenceBox.add(Box.createVerticalStrut(8));
 		guidenceBox.add(login);
 		guidenceBox.add(Box.createVerticalStrut(8));
@@ -65,41 +79,33 @@ public class ImportView extends JFrame{
 		guidenceBox.add(Box.createVerticalStrut(8));
 		guidenceBox.add(account);
 		guidenceBox.add(Box.createVerticalStrut(8));
-		
-		Object[][] data=Package.getImportSet();
-        String[] line={"日期","进退货","客户名","商品","型号","数量","单价","总价"};
-        JTable table=new JTable(data,line);
-        table.setPreferredScrollableViewportSize(new Dimension(200,200));
-        JScrollPane scrollPane=new JScrollPane(table);   
+
+		Object[][] data = Package.getImportSet();
+		String[] line = { "日期", "进退货", "客户名", "商品", "型号", "数量", "单价", "总价" };
+		JTable table = new JTable(data, line);
+		table.setPreferredScrollableViewportSize(new Dimension(200, 200));
+		JScrollPane scrollPane = new JScrollPane(table);
 		tableBox.add(Box.createVerticalStrut(8));
 		tableBox.add(scrollPane);
 		tableBox.add(Box.createVerticalStrut(8));
-		
-		IMPORT_ADD=new JButton("创建进货单");
-		IMPORT_DEL=new JButton("创建退货单");
-		IMPORT_SHO=new JButton("查看单据");
-		
-		IMPORT_ADD.addActionListener(ActionListener);
-		IMPORT_DEL.addActionListener(ActionListener);
-		IMPORT_SHO.addActionListener(ActionListener);
-		
-		IMPORT_ADD_CUSTOMER=new JTextField(15);
-		IMPORT_ADD_COMMODITY=new JTextField(15);
-		IMPORT_ADD_COMTYPE=new JTextField(15);
-		IMPORT_ADD_NUMBER=new JTextField(15);
-        IMPORT_ADD_PRICE=new JTextField(15);
-        IMPORT_DEL_CUSTOMER=new JTextField(15);
-        IMPORT_DEL_COMMODITY=new JTextField(15);
-        IMPORT_DEL_COMTYPE=new JTextField(15);
-        IMPORT_DEL_NUMBER=new JTextField(15);
-        IMPORT_DEL_PRICE=new JTextField(15);
-        IMPORT_SHO_BEGINDATE=new JTextField(15);
-        IMPORT_SHO_ENDDATE=new JTextField(15);
-        
-		box1=Box.createHorizontalBox();
-		box2=Box.createHorizontalBox();
-		box3=Box.createHorizontalBox();
-		
+
+		IMPORT_ADD_CUSTOMER = new JTextField(15);
+		IMPORT_ADD_COMMODITY = new JTextField(15);
+		IMPORT_ADD_COMTYPE = new JTextField(15);
+		IMPORT_ADD_NUMBER = new JTextField(15);
+		IMPORT_ADD_PRICE = new JTextField(15);
+		IMPORT_DEL_CUSTOMER = new JTextField(15);
+		IMPORT_DEL_COMMODITY = new JTextField(15);
+		IMPORT_DEL_COMTYPE = new JTextField(15);
+		IMPORT_DEL_NUMBER = new JTextField(15);
+		IMPORT_DEL_PRICE = new JTextField(15);
+		IMPORT_SHO_BEGINDATE = new JTextField(15);
+		IMPORT_SHO_ENDDATE = new JTextField(15);
+
+		box1 = Box.createHorizontalBox();
+		box2 = Box.createHorizontalBox();
+		box3 = Box.createHorizontalBox();
+
 		box1.add(Box.createHorizontalStrut(8));
 		box1.add(IMPORT_ADD);
 		box1.add(new JLabel("客户"));
@@ -113,7 +119,7 @@ public class ImportView extends JFrame{
 		box1.add(new JLabel("单价"));
 		box1.add(IMPORT_ADD_PRICE);
 		box1.add(Box.createHorizontalStrut(8));
-		
+
 		box2.add(Box.createHorizontalStrut(8));
 		box2.add(IMPORT_DEL);
 		box2.add(new JLabel("客户"));
@@ -128,8 +134,6 @@ public class ImportView extends JFrame{
 		box2.add(IMPORT_DEL_PRICE);
 		box2.add(Box.createHorizontalStrut(8));
 
-		
-		
 		box3.add(Box.createHorizontalStrut(8));
 		box3.add(IMPORT_SHO);
 		box3.add(new JLabel("开始日期"));
@@ -138,35 +142,33 @@ public class ImportView extends JFrame{
 		box3.add(new JLabel("结束日期"));
 		box3.add(IMPORT_SHO_ENDDATE);
 		box3.add(Box.createHorizontalStrut(8));
-				
+
 		operationBox.add(box1);
 		operationBox.add(box2);
 		operationBox.add(box3);
-		
-		
+
 		contentBox.add(Box.createVerticalStrut(8));
 		contentBox.add(tableBox);
 		contentBox.add(Box.createVerticalStrut(8));
 		contentBox.add(operationBox);
 		contentBox.add(Box.createVerticalStrut(8));
-		
+
 		basebox.add(Box.createHorizontalStrut(8));
 		basebox.add(guidenceBox);
 		basebox.add(Box.createHorizontalStrut(8));
 		basebox.add(contentBox);
 		basebox.add(Box.createHorizontalStrut(8));
-		
-		JLabel welcome=new JLabel("welcome"+" "+name+" "+occuption);
+
+		JLabel welcome = new JLabel("welcome" + " " + name + " " + occuption);
 		add(welcome, BorderLayout.NORTH);
-        add(basebox, BorderLayout.CENTER);		
-		this.setSize(600,400);
+		add(basebox, BorderLayout.CENTER);
+		this.setSize(600, 400);
 		setTitle("进货");
-	    setVisible(true);
-        setLocation(400, 250);
-		
+		setVisible(true);
+		setLocation(400, 250);
+
 	}
 
-	
 	public JButton getLogin() {
 		return login;
 	}
@@ -359,21 +361,12 @@ public class ImportView extends JFrame{
 		this.occuption = occuption;
 	}
 
-
 	public Package getPackage() {
 		return Package;
 	}
 
-
 	public void setPackage(Package package1) {
 		Package = package1;
 	}
-	
-	
-	
-	
-	
-	
+
 }
-
-
