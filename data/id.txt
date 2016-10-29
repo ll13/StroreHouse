@@ -1,0 +1,3 @@
+lili;111111;stockmane;	
+lifi;222222;salesman;	
+ligi;333333;accountant;	
