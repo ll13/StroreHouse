@@ -1,10 +1,9 @@
+
 package model;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
-import junit.framework.Assert;
 import vo.Package;
 public class TestImportModel {
 
@@ -13,7 +12,7 @@ public class TestImportModel {
 		ImportModel i=new ImportModel();
 		String [] content={"2014/04/03","2014/05/01"};
 		Package p=i.findImport(content);
-		Assert.assertTrue(p.getImportSet().length==2);
+		assertTrue(p.getImportSet().length==2);
 	}
 
 }

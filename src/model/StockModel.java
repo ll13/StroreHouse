@@ -11,6 +11,7 @@ public class StockModel {
 	ArrayList<Stock> stockList = new ArrayList<Stock>();
 	WriteFile writefile = new WriteFile();
 	ReadFile readfile = new ReadFile();
+	int point = 0;
 
 	public void read() {
 		String[][] Set = readfile.readData("data/stock.txt");
@@ -80,6 +81,7 @@ public class StockModel {
 				if (stockList.get(i).getName().equals(stockFind[0])) {
 					if (stockList.get(i).getType().equals(stockFind[1])) {
 						result.add(stockList.get(i));
+						point = i;
 					}
 				}
 			}
@@ -87,7 +89,7 @@ public class StockModel {
 		if (result.isEmpty()) {
 			package1.setResult("not find");
 		} else {
-			package1.setCommoditySet(listToString(result));
+			package1.setStockSet(listToString(result));
 			package1.setResult("find");
 		}
 		return package1;
@@ -99,7 +101,7 @@ public class StockModel {
 		read();
 
 		result = stockList;
-		package1.setCommoditySet(listToString(result));
+		package1.setStockSet(listToString(result));
 		package1.setResult("stock show success");
 
 		return package1;
@@ -114,12 +116,12 @@ public class StockModel {
 		stockFind[0] = stockImport[0];
 		stockFind[1] = stockImport[1];
 		Stock stockFindResult = null;
-		stockFindResult = stringToList(findStock(stockFind).getCommoditySet()).get(0);
+		stockFindResult = stringToList(findStock(stockFind).getStockSet()).get(0);
 		if (stockFindResult == null) {
 			package1.setResult("stock import add not find");
 			return package1;
 		}
-		stockList.remove(stockFindResult);
+		stockList.remove(point);
 
 		int stockAllPrice, importAllPrice, stockMinPrice, stockNumber;
 		importAllPrice = Integer.parseInt(stockImport[3]) * Integer.parseInt(stockImport[4]);
@@ -136,7 +138,7 @@ public class StockModel {
 		stockList.add(stockFindResult);
 		write();
 		result = stockList;
-		package1.setCommoditySet(listToString(result));
+		package1.setStockSet(listToString(result));
 		package1.setResult("stock import add success");
 
 		return package1;
@@ -152,19 +154,19 @@ public class StockModel {
 		stockFind[0] = stockImport[0];
 		stockFind[1] = stockImport[1];
 		Stock stockFindResult = null;
-		stockFindResult = stringToList(findStock(stockFind).getCommoditySet()).get(0);
+		stockFindResult = stringToList(findStock(stockFind).getStockSet()).get(0);
 		if (stockFindResult == null) {
 			package1.setResult("stock import del not find");
 			return package1;
-		}		
-        
-		if(stockFindResult.getImport_number()!=Integer.parseInt(stockImport[3])||
-				stockFindResult.getImport_MINprice()!=Integer.parseInt(stockImport[4])){
+		}
+
+		if (stockFindResult.getImport_number() != Integer.parseInt(stockImport[3])
+				|| stockFindResult.getImport_MINprice() != Integer.parseInt(stockImport[4])) {
 			package1.setResult("stock import del cannot import del");
 			return package1;
 		}
-		
-		stockList.remove(stockFindResult);
+
+		stockList.remove(point);
 		int stockAllPrice, importAllPrice, stockMinPrice, stockNumber;
 		importAllPrice = Integer.parseInt(stockImport[3]) * Integer.parseInt(stockImport[4]);
 		stockAllPrice = stockFindResult.getStock_Allprice() - importAllPrice;
@@ -180,7 +182,7 @@ public class StockModel {
 		stockList.add(stockFindResult);
 		write();
 		result = stockList;
-		package1.setCommoditySet(listToString(result));
+		package1.setStockSet(listToString(result));
 		package1.setResult("stock import del success");
 
 		return package1;
@@ -196,12 +198,12 @@ public class StockModel {
 		stockFind[0] = stockExport[0];
 		stockFind[1] = stockExport[1];
 		Stock stockFindResult = null;
-		stockFindResult = stringToList(findStock(stockFind).getCommoditySet()).get(0);
+		stockFindResult = stringToList(findStock(stockFind).getStockSet()).get(0);
 		if (stockFindResult == null) {
 			package1.setResult("stock export add not find");
 			return package1;
 		}
-		stockList.remove(stockFindResult);
+		stockList.remove(point);
 
 		int stockAllPrice, stockMinPrice, stockNumber, exportAllPrice;
 		exportAllPrice = Integer.parseInt(stockExport[3]) * Integer.parseInt(stockExport[4]);
@@ -218,7 +220,7 @@ public class StockModel {
 		stockList.add(stockFindResult);
 		write();
 		result = stockList;
-		package1.setCommoditySet(listToString(result));
+		package1.setStockSet(listToString(result));
 		package1.setResult("stock export add success");
 
 		return package1;
@@ -234,19 +236,19 @@ public class StockModel {
 		stockFind[0] = stockExport[0];
 		stockFind[1] = stockExport[1];
 		Stock stockFindResult = null;
-		stockFindResult = stringToList(findStock(stockFind).getCommoditySet()).get(0);
+		stockFindResult = stringToList(findStock(stockFind).getStockSet()).get(0);
 		if (stockFindResult == null) {
 			package1.setResult("stock export del not find");
 			return package1;
 		}
-		
-		if(stockFindResult.getExport_number()!=Integer.parseInt(stockExport[3])||
-				stockFindResult.getExport_MINprice()!=Integer.parseInt(stockExport[4])){
+
+		if (stockFindResult.getExport_number() != Integer.parseInt(stockExport[3])
+				|| stockFindResult.getExport_MINprice() != Integer.parseInt(stockExport[4])) {
 			package1.setResult("stock export del cannot export del");
 			return package1;
 		}
-		
-		stockList.remove(stockFindResult);        				
+
+		stockList.remove(point);
 		int stockAllPrice, stockMinPrice, stockNumber, exportAllPrice;
 		exportAllPrice = Integer.parseInt(stockExport[3]) * Integer.parseInt(stockExport[4]);
 		stockNumber = stockFindResult.getStock_number() + Integer.parseInt(stockExport[3]);
@@ -260,12 +262,53 @@ public class StockModel {
 		stockFindResult.setStock_Allprice(stockAllPrice);
 		stockFindResult.setStock_MINprice(stockMinPrice);
 		stockList.add(stockFindResult);
+
 		write();
 		result = stockList;
-		package1.setCommoditySet(listToString(result));
+		package1.setStockSet(listToString(result));
 		package1.setResult("stock export del success");
 
 		return package1;
 
 	}
+
+	public Package addCommodityStock(String[] commodityAddStock) {
+		Package package1 = new Package();
+		ArrayList<Stock> result = new ArrayList<Stock>();
+		read();
+
+		String[] stockFind = new String[2];
+		stockFind[0] = commodityAddStock[0];
+		stockFind[1] = commodityAddStock[1];
+		Stock stockFindResult = null;
+		stockFindResult = stringToList(findStock(stockFind).getStockSet()).get(0);
+		if (stockFindResult != null) {
+			package1.setResult("stock commodity add exist");
+			return package1;
+		}
+
+		Stock stockNew = new Stock();
+
+		stockNew.setName(commodityAddStock[0]);
+		stockNew.setType(commodityAddStock[1]);
+		stockNew.setImport_number(0);
+		stockNew.setImport_MINprice(0);
+		stockNew.setImport_Allprice(0);
+		stockNew.setExport_number(0);
+		stockNew.setExport_MINprice(0);
+		stockNew.setExport_Allprice(0);
+		stockNew.setStock_number(0);
+		stockNew.setStock_MINprice(0);
+		stockNew.setStock_Allprice(0);
+
+		stockList.add(stockNew);
+		write();
+		result = stockList;
+		package1.setStockSet(listToString(result));
+		package1.setResult("stock commodity add success");
+
+		return package1;
+
+	}
+
 }

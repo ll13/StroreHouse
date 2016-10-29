@@ -155,11 +155,11 @@ public class CommodityModel {
 			package1.setResult("commodity import add not find");
 			return package1;
 		}
-		commodityList.remove(commodityFindResult);
+		commodityList.remove(point);
 		int number = commodityFindResult.getNumber();
 		commodityFindResult.setNumber(Integer.parseInt(commodityImport[2]) + number);
 		commodityFindResult.setImport_price(Integer.parseInt(commodityImport[3]));
-		commodityList.remove(point);
+		commodityList.add(commodityFindResult);
 		write();
 		result = commodityList;
 		package1.setCommoditySet(listToString(result));
@@ -188,6 +188,7 @@ public class CommodityModel {
 		commodityFindResult.setNumber(Integer.parseInt(commodityImport[2]) - number);
 		commodityFindResult.setImport_price(Integer.parseInt(commodityImport[3]));
 		commodityList.add(commodityFindResult);
+		
 		write();
 		result = commodityList;
 		package1.setCommoditySet(listToString(result));
@@ -217,6 +218,7 @@ public class CommodityModel {
 		commodityFindResult.setNumber(number - Integer.parseInt(commodityExport[2]));
 		commodityFindResult.setExport_price(Integer.parseInt(commodityExport[3]));
 		commodityList.add(commodityFindResult);
+		
 		write();
 		result = commodityList;
 		package1.setCommoditySet(listToString(result));
@@ -244,6 +246,7 @@ public class CommodityModel {
 		commodityFindResult.setNumber(number + Integer.parseInt(commodityExport[2]));
 		commodityFindResult.setExport_price(Integer.parseInt(commodityExport[3]));
 		commodityList.add(commodityFindResult);
+		
 		write();
 		result = commodityList;
 		package1.setCommoditySet(listToString(result));

@@ -157,6 +157,16 @@ public class ImportModel {
 		return package1;
 	}
 	
-	
+	public Package showImport(String[] importShow) {
+		Package package1 = new Package();
+		ArrayList<Import> result = new ArrayList<Import>();
+		read();
+
+		result=importList;
+		package1.setImportSet(listToString(result));
+		package1.setResult("import show  success");
+
+		return package1;
+	}
 
 }

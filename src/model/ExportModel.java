@@ -92,7 +92,7 @@ public class ExportModel {
 		write();
 		result = exportList;
 		package1.setExportSet(listToString(result));
-		package1.setResult("import add success");
+		package1.setResult("export add success");
 
 		return package1;
 	}
@@ -124,7 +124,7 @@ public class ExportModel {
 		return package1;
 	}
 	
-	public Package findImport(String[] importFind) {
+	public Package findExport(String[] exportFind) {
 		Package package1 = new Package();
 		ArrayList<Export> result = new ArrayList<Export>();
 		read();
@@ -132,8 +132,8 @@ public class ExportModel {
 		Calendar begin = Calendar.getInstance();
 		Calendar end = Calendar.getInstance();
 		Calendar compare = Calendar.getInstance();
-		String begintime[] = importFind[0].split("/");
-		String endtime[] = importFind[1].split("/");
+		String begintime[] = exportFind[0].split("/");
+		String endtime[] = exportFind[1].split("/");
 		begin.set(Integer.parseInt(begintime[0]), Integer.parseInt(begintime[1]) - 1, Integer.parseInt(begintime[2]));
 		end.set(Integer.parseInt(endtime[0]), Integer.parseInt(endtime[1]) - 1, Integer.parseInt(endtime[2]));
 		long beginMi=begin.getTimeInMillis();
@@ -157,6 +157,16 @@ public class ExportModel {
 		return package1;
 	}
 	
-	
+	public Package showExport(String[] exportShow) {
+		Package package1 = new Package();
+		ArrayList<Export> result = new ArrayList<Export>();
+		read();
+
+		result=exportList;
+		package1.setExportSet(listToString(result));
+		package1.setResult("export show  success");
+
+		return package1;
+	}
 
 }
