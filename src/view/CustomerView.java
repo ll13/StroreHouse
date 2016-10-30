@@ -20,7 +20,6 @@ public class CustomerView extends JFrame {
 	private static final long serialVersionUID = 1L;
 	Box tableBox, operationBox, guidenceBox, contentBox, basebox;
 	Box box1, box2, box3, box4;
-	JButton login, stock, commodity, Import, export, customer, account;
 	JTextField CUSTOMER_ADD_NAME, CUSTOMER_ADD_TEL, CUSTOMER_DEL_NAME, CUSTOMER_UPD_NAME, CUSTOMER_UPD_TEL,
 			CUSTOMER_FIN_NAME;
 	JButton CUSTOMER_ADD, CUSTOMER_DEL, CUSTOMER_UPD, CUSTOMER_FIN, CUSTOMER_SHO;
@@ -31,13 +30,7 @@ public class CustomerView extends JFrame {
 	Package Package = new Package();
 
 	public CustomerView() {
-		login = new JButton("登录");
-		stock = new JButton("库存");
-		commodity = new JButton("商品");
-		Import = new JButton("进货");
-		export = new JButton("销售");
-		customer = new JButton("客户");
-		account = new JButton("账目");
+	
 
 		CUSTOMER_ADD = new JButton("增加");
 		CUSTOMER_DEL = new JButton("删除");
@@ -65,15 +58,6 @@ public class CustomerView extends JFrame {
 
 	public void addListener(ClientController ActionListener) {
 		
-
-		login.addActionListener(ActionListener);
-		commodity.addActionListener(ActionListener);
-		stock.addActionListener(ActionListener);
-		Import.addActionListener(ActionListener);
-		export.addActionListener(ActionListener);
-		customer.addActionListener(ActionListener);
-		account.addActionListener(ActionListener);		
-
 		CUSTOMER_ADD.addActionListener(ActionListener);
 		CUSTOMER_DEL.addActionListener(ActionListener);
 		CUSTOMER_UPD.addActionListener(ActionListener);
@@ -87,22 +71,6 @@ public class CustomerView extends JFrame {
 		contentBox = Box.createVerticalBox();
 		tableBox = Box.createVerticalBox();
 		basebox = Box.createHorizontalBox();
-
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(login);
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(commodity);
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(stock);
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(Import);
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(export);
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(customer);
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(account);
-		guidenceBox.add(Box.createVerticalStrut(8));
 
 		Object[][] data = Package.getCustomerSet();
 
@@ -184,34 +152,7 @@ public class CustomerView extends JFrame {
 
 	}
 
-	public JButton getLogin() {
-		return login;
-	}
-
-	public JButton getStock() {
-		return stock;
-	}
-
-	public JButton getCommodity() {
-		return commodity;
-	}
-
-	public JButton getImport() {
-		return Import;
-	}
-
-	public JButton getExport() {
-		return export;
-	}
-
-	public JButton getCustomer() {
-		return customer;
-	}
-
-	public JButton getAccount() {
-		return account;
-	}
-
+	
 	public String getCUSTOMER_ADD_NAME() {
 		return CUSTOMER_ADD_NAME.getText();
 	}
@@ -264,33 +205,7 @@ public class CustomerView extends JFrame {
 		return occuption;
 	}
 
-	public void setLogin(JButton login) {
-		this.login = login;
-	}
-
-	public void setStock(JButton stock) {
-		this.stock = stock;
-	}
-
-	public void setCommodity(JButton commodity) {
-		this.commodity = commodity;
-	}
-
-	public void setImport(JButton import1) {
-		Import = import1;
-	}
-
-	public void setExport(JButton export) {
-		this.export = export;
-	}
-
-	public void setCustomer(JButton customer) {
-		this.customer = customer;
-	}
-
-	public void setAccount(JButton account) {
-		this.account = account;
-	}
+	
 
 	public void setCUSTOMER_ADD_NAME(JTextField cUSTOMER_ADD_NAME) {
 		CUSTOMER_ADD_NAME = cUSTOMER_ADD_NAME;

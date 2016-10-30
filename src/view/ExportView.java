@@ -20,7 +20,6 @@ public class ExportView extends JFrame {
 	private static final long serialVersionUID = 1L;
 	Box tableBox, operationBox, guidenceBox, contentBox, basebox;
 	Box box1, box2, box3;
-	JButton login, stock, commodity, Import, export, customer, account;
 	JButton EXPORT_ADD, EXPORT_DEL, EXPORT_SHO;
 	JTextField EXPORT_ADD_CUSTOMER, EXPORT_ADD_COMMODITY, EXPORT_ADD_COMTYPE, EXPORT_ADD_NUMBER, EXPORT_ADD_PRICE,
 			EXPORT_DEL_CUSTOMER, EXPORT_DEL_COMMODITY, EXPORT_DEL_COMTYPE, EXPORT_DEL_NUMBER, EXPORT_DEL_PRICE,
@@ -32,13 +31,7 @@ public class ExportView extends JFrame {
 	Package Package = new Package();
 
 	public ExportView() {
-		login = new JButton("登录");
-		stock = new JButton("库存");
-		commodity = new JButton("商品");
-		Import = new JButton("进货");
-		export = new JButton("销售");
-		customer = new JButton("客户");
-		account = new JButton("账目");
+		
 
 		EXPORT_ADD = new JButton("创建进货单");
 		EXPORT_DEL = new JButton("创建退货单");
@@ -64,16 +57,6 @@ public class ExportView extends JFrame {
 	}
 
 	public void addListener(ClientController ActionListener) {
-		
-
-		login.addActionListener(ActionListener);
-		commodity.addActionListener(ActionListener);
-		stock.addActionListener(ActionListener);
-		Import.addActionListener(ActionListener);
-		export.addActionListener(ActionListener);
-		customer.addActionListener(ActionListener);
-		account.addActionListener(ActionListener);
-
 	
 		EXPORT_ADD.addActionListener(ActionListener);
 		EXPORT_DEL.addActionListener(ActionListener);
@@ -86,22 +69,6 @@ public class ExportView extends JFrame {
 		contentBox = Box.createVerticalBox();
 		tableBox = Box.createVerticalBox();
 		basebox = Box.createHorizontalBox();
-
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(login);
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(commodity);
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(stock);
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(Import);
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(export);
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(customer);
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(account);
-		guidenceBox.add(Box.createVerticalStrut(8));
 
 		Object[][] data = Package.getExportSet();
 		String[] line = { "日期", "进退货", "客户名", "商品", "型号", "数量", "单价", "总价" };
@@ -193,61 +160,7 @@ public class ExportView extends JFrame {
 
 	}
 
-	public JButton getLogin() {
-		return login;
-	}
 
-	public void setLogin(JButton login) {
-		this.login = login;
-	}
-
-	public JButton getStock() {
-		return stock;
-	}
-
-	public void setStock(JButton stock) {
-		this.stock = stock;
-	}
-
-	public JButton getCommodity() {
-		return commodity;
-	}
-
-	public void setCommodity(JButton commodity) {
-		this.commodity = commodity;
-	}
-
-	public JButton getImport() {
-		return Import;
-	}
-
-	public void setImport(JButton import1) {
-		Import = import1;
-	}
-
-	public JButton getExport() {
-		return export;
-	}
-
-	public void setExport(JButton export) {
-		this.export = export;
-	}
-
-	public JButton getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(JButton customer) {
-		this.customer = customer;
-	}
-
-	public JButton getAccount() {
-		return account;
-	}
-
-	public void setAccount(JButton account) {
-		this.account = account;
-	}
 
 	public JButton getEXPORT_ADD() {
 		return EXPORT_ADD;

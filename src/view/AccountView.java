@@ -20,7 +20,6 @@ public class AccountView extends JFrame {
 	private static final long serialVersionUID = 1L;
 	Box tableBox, operationBox, guidenceBox, contentBox, basebox;
 	Box box1, box2, box3;
-	JButton login, stock, commodity, Import, export, customer, account;
 	JTextField ACCOUNT_CUSTOMER, ACCOUNT_IN_MONEY, ACCOUNT_OUT_CUSTOMER, ACCOUNT_OUT_MONEY, ACCOUNT_INI_MONEY;
 	JButton ACCOUNT_IN, ACCOUNT_OUT, ACCOUNT_ALL, ACCOUNT_DET, ACCOUNT_INI;
 	String name = "";
@@ -29,14 +28,7 @@ public class AccountView extends JFrame {
 	JLabel message;
 	Package Package=new Package();
 
-	public AccountView() {
-		login = new JButton("登录");
-		stock = new JButton("库存");
-		commodity = new JButton("商品");
-		Import = new JButton("进货");
-		export = new JButton("销售");
-		customer = new JButton("客户");
-		account = new JButton("账目");
+	public AccountView() {	
 
 		ACCOUNT_IN = new JButton("创建收款单");
 		ACCOUNT_OUT = new JButton("创建付款单");
@@ -63,15 +55,7 @@ public class AccountView extends JFrame {
 	}
 
 	public void addListener(ClientController ActionListener){
-		
-		login.addActionListener(ActionListener);
-		commodity.addActionListener(ActionListener);
-		stock.addActionListener(ActionListener);
-		Import.addActionListener(ActionListener);
-		export.addActionListener(ActionListener);
-		customer.addActionListener(ActionListener);
-		account.addActionListener(ActionListener);
-
+	
 		ACCOUNT_IN.addActionListener(ActionListener);
 		ACCOUNT_OUT.addActionListener(ActionListener);
 		ACCOUNT_ALL.addActionListener(ActionListener);
@@ -88,21 +72,6 @@ public class AccountView extends JFrame {
 		basebox = Box.createHorizontalBox();
 
 
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(login);
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(commodity);
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(stock);
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(Import);
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(export);
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(customer);
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(account);
-		guidenceBox.add(Box.createVerticalStrut(8));
 
 		Object[][] data_all = Package.getAccountAllSet();
 		String[] line_all = { "账目总额", "应收总额", "应付总额" };
@@ -185,33 +154,6 @@ public class AccountView extends JFrame {
 		
 	}
 
-	public JButton getLogin() {
-		return login;
-	}
-
-	public JButton getStock() {
-		return stock;
-	}
-
-	public JButton getCommodity() {
-		return commodity;
-	}
-
-	public JButton getImport() {
-		return Import;
-	}
-
-	public JButton getExport() {
-		return export;
-	}
-
-	public JButton getCustomer() {
-		return customer;
-	}
-
-	public JButton getAccount() {
-		return account;
-	}
 
 	public String getACCOUNT_CUSTOMER() {
 		return ACCOUNT_CUSTOMER.getText();
@@ -261,33 +203,7 @@ public class AccountView extends JFrame {
 		return occuption;
 	}
 
-	public void setLogin(JButton login) {
-		this.login = login;
-	}
-
-	public void setStock(JButton stock) {
-		this.stock = stock;
-	}
-
-	public void setCommodity(JButton commodity) {
-		this.commodity = commodity;
-	}
-
-	public void setImport(JButton import1) {
-		Import = import1;
-	}
-
-	public void setExport(JButton export) {
-		this.export = export;
-	}
-
-	public void setCustomer(JButton customer) {
-		this.customer = customer;
-	}
-
-	public void setAccount(JButton account) {
-		this.account = account;
-	}
+	
 
 	public void setACCOUNT_CUSTOMER(JTextField aCCOUNT_CUSTOMER) {
 		ACCOUNT_CUSTOMER = aCCOUNT_CUSTOMER;

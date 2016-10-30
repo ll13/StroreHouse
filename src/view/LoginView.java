@@ -81,10 +81,7 @@ public class LoginView extends JFrame {
 		box3.add(stockmane);
 		box3.add(salesman);
 		box3.add(accountant);		
-		box3.add(Box.createHorizontalStrut(8));
-		
-		
-		
+		box3.add(Box.createHorizontalStrut(8));	
 		
 		box4.add(Box.createHorizontalStrut(28));
 		box4.add(login_in);

@@ -203,7 +203,7 @@ public class AccountModel {
 		return package1;
 	}
 	
-	public Package importAccountAll(String accountAllImport[]){
+	public Package importAddAccountAll(String accountAllImport[]){
 		Package package1 = new Package();
 		ArrayList<AccountAll> resultAll = new ArrayList<AccountAll>();		
 		read();
@@ -227,7 +227,7 @@ public class AccountModel {
 		return package1;
 	}
 	
-	public Package exportAccountAll(String accountAllExport[]){
+	public Package exportAddAccountAll(String accountAllExport[]){
 		Package package1 = new Package();
 		ArrayList<AccountAll> resultAll = new ArrayList<AccountAll>();		
 		read();
@@ -235,6 +235,53 @@ public class AccountModel {
 		AccountAll accountAll = new AccountAll();
 		int sum_money=accountAllList.get(0).getSum_money();
 		int should_get=accountAllList.get(0).getSum_should_get_money()+
+				Integer.parseInt(accountAllExport[3])*Integer.parseInt(accountAllExport[4]);
+		int should_pay=accountAllList.get(0).getSum_should_pay_money();
+		
+		accountAll.setSum_money(sum_money);
+		accountAll.setSum_should_get_money(should_get);
+		accountAll.setSum_should_pay_money(should_pay);
+		
+		accountAllList.remove(0);
+		accountAllList.add(accountAll);
+		write();
+		resultAll = accountAllList;
+		package1.setAccountAllSet(listToStringAll(resultAll));
+		package1.setResult("account export success");
+		return package1;
+	}
+	public Package importDelAccountAll(String accountAllImport[]){
+		Package package1 = new Package();
+		ArrayList<AccountAll> resultAll = new ArrayList<AccountAll>();		
+		read();
+		
+		AccountAll accountAll = new AccountAll();
+		int sum_money=accountAllList.get(0).getSum_money();
+		int should_get=accountAllList.get(0).getSum_should_get_money();
+		int should_pay=accountAllList.get(0).getSum_should_pay_money()-
+		Integer.parseInt(accountAllImport[3])*Integer.parseInt(accountAllImport[4]);
+		
+		accountAll.setSum_money(sum_money);
+		accountAll.setSum_should_get_money(should_get);
+		accountAll.setSum_should_pay_money(should_pay);
+		
+		accountAllList.remove(0);
+		accountAllList.add(accountAll);
+		write();
+		resultAll = accountAllList;
+		package1.setAccountAllSet(listToStringAll(resultAll));
+		package1.setResult("account import success");
+		return package1;
+	}
+	
+	public Package exportDelAccountAll(String accountAllExport[]){
+		Package package1 = new Package();
+		ArrayList<AccountAll> resultAll = new ArrayList<AccountAll>();		
+		read();
+		
+		AccountAll accountAll = new AccountAll();
+		int sum_money=accountAllList.get(0).getSum_money();
+		int should_get=accountAllList.get(0).getSum_should_get_money()-
 				Integer.parseInt(accountAllExport[3])*Integer.parseInt(accountAllExport[4]);
 		int should_pay=accountAllList.get(0).getSum_should_pay_money();
 		

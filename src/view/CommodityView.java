@@ -19,7 +19,6 @@ public class CommodityView extends JFrame {
 	private static final long serialVersionUID = 1L;
 	Box tableBox, operationBox, guidenceBox, contentBox, basebox;
 	Box box1, box2, box3, box4;
-	JButton login, stock, commodity, Import, export, customer, account;
 	JTextField COMMODITY_ADD_NAME, COMMODITY_ADD_TYPE, COMMODITY_ADD_MIP, COMMODITY_ADD_MEP, COMMODITY_DEL_NAME,
 			COMMODITY_DEL_TYPE, COMMODITY_UPD_NAME, COMMODITY_UPD_TYPE, COMMODITY_UPD_MIP, COMMODITY_UPD_MEP,
 			COMMODITY_FIN_NAME, COMMODITY_FIN_TYPE;
@@ -32,13 +31,7 @@ public class CommodityView extends JFrame {
 	Package Package = new Package();
 
 	public CommodityView() {
-		login = new JButton("登录");
-		stock = new JButton("库存");
-		commodity = new JButton("商品");
-		Import = new JButton("进货");
-		export = new JButton("销售");
-		customer = new JButton("客户");
-		account = new JButton("账目");
+		
 
 		COMMODITY_ADD = new JButton("增加");
 		COMMODITY_DEL = new JButton("删除");
@@ -65,14 +58,7 @@ public class CommodityView extends JFrame {
 	}
 
 	public void addListener(ClientController ActionListener) {
-		login.addActionListener(ActionListener);
-		commodity.addActionListener(ActionListener);
-		stock.addActionListener(ActionListener);
-		Import.addActionListener(ActionListener);
-		export.addActionListener(ActionListener);
-		customer.addActionListener(ActionListener);
-		account.addActionListener(ActionListener);
-
+		
 		COMMODITY_ADD.addActionListener(ActionListener);
 		COMMODITY_DEL.addActionListener(ActionListener);
 		COMMODITY_UPD.addActionListener(ActionListener);
@@ -86,22 +72,6 @@ public class CommodityView extends JFrame {
 		contentBox = Box.createVerticalBox();
 		tableBox = Box.createVerticalBox();
 		basebox = Box.createHorizontalBox();
-
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(login);
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(commodity);
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(stock);
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(Import);
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(export);
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(customer);
-		guidenceBox.add(Box.createVerticalStrut(8));
-		guidenceBox.add(account);
-		guidenceBox.add(Box.createVerticalStrut(8));
 
 		String[][] data = Package.getCommoditySet();
 		String[] line = { "名称", "型号", "数量", "默认进价", "默认售价", "最近进价", "最近售价" };
@@ -202,61 +172,7 @@ public class CommodityView extends JFrame {
 
 	}
 
-	public JButton getLogin() {
-		return login;
-	}
-
-	public void setLogin(JButton login) {
-		this.login = login;
-	}
-
-	public JButton getStock() {
-		return stock;
-	}
-
-	public void setStock(JButton stock) {
-		this.stock = stock;
-	}
-
-	public JButton getCommodity() {
-		return commodity;
-	}
-
-	public void setCommodity(JButton commodity) {
-		this.commodity = commodity;
-	}
-
-	public JButton getImport() {
-		return Import;
-	}
-
-	public void setImport(JButton import1) {
-		Import = import1;
-	}
-
-	public JButton getExport() {
-		return export;
-	}
-
-	public void setExport(JButton export) {
-		this.export = export;
-	}
-
-	public JButton getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(JButton customer) {
-		this.customer = customer;
-	}
-
-	public JButton getAccount() {
-		return account;
-	}
-
-	public void setAccount(JButton account) {
-		this.account = account;
-	}
+	
 
 	public String getCOMMODITY_ADD_NAME() {
 		return COMMODITY_ADD_NAME.getText();
