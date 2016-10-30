@@ -25,9 +25,11 @@ public class AccountView extends JFrame {
 	JButton ACCOUNT_IN, ACCOUNT_OUT, ACCOUNT_ALL, ACCOUNT_DET, ACCOUNT_INI;
 	String name = "";
 	String occuption = "";
+	JLabel welcome;
+	JLabel message;
 	Package Package=new Package();
 
-	public void addListener(ClientController ActionListener){
+	public AccountView() {
 		login = new JButton("登录");
 		stock = new JButton("库存");
 		commodity = new JButton("商品");
@@ -36,6 +38,32 @@ public class AccountView extends JFrame {
 		customer = new JButton("客户");
 		account = new JButton("账目");
 
+		ACCOUNT_IN = new JButton("创建收款单");
+		ACCOUNT_OUT = new JButton("创建付款单");
+		ACCOUNT_ALL = new JButton("查看总账目");
+		ACCOUNT_DET = new JButton("查看具体账目");
+		ACCOUNT_INI = new JButton("初始化账目");
+
+		welcome = new JLabel();
+		message = new JLabel();
+
+	}
+
+	public void clear() {
+		if (basebox != null) {
+			remove(basebox);
+		}
+		if (message.getText() != "") {
+			message.setText("");
+		}
+		if (welcome.getText() != "") {
+			welcome.setText("");
+		}
+
+	}
+
+	public void addListener(ClientController ActionListener){
+		
 		login.addActionListener(ActionListener);
 		commodity.addActionListener(ActionListener);
 		stock.addActionListener(ActionListener);
@@ -43,13 +71,6 @@ public class AccountView extends JFrame {
 		export.addActionListener(ActionListener);
 		customer.addActionListener(ActionListener);
 		account.addActionListener(ActionListener);
-
-
-		ACCOUNT_IN = new JButton("创建收款单");
-		ACCOUNT_OUT = new JButton("创建付款单");
-		ACCOUNT_ALL = new JButton("查看总账目");
-		ACCOUNT_DET = new JButton("查看具体账目");
-		ACCOUNT_INI = new JButton("初始化账目");
 
 		ACCOUNT_IN.addActionListener(ActionListener);
 		ACCOUNT_OUT.addActionListener(ActionListener);
@@ -153,9 +174,10 @@ public class AccountView extends JFrame {
 		basebox.add(contentBox);
 		basebox.add(Box.createHorizontalStrut(8));
 
-		JLabel welcome=new JLabel("welcome"+" "+name+" "+occuption);
+		welcome.setText("welcome"+" "+name+" "+occuption);
 		add(welcome, BorderLayout.NORTH);
-		add(basebox, BorderLayout.CENTER);
+        add(basebox, BorderLayout.CENTER);
+        add(message,BorderLayout.SOUTH);
 		this.setSize(600, 400);
 		setTitle("账目");
 		setVisible(true);
@@ -323,6 +345,21 @@ public class AccountView extends JFrame {
 		Package = package1;
 	}
 	
+	public String getWelcome() {
+		return welcome.getText();
+	}
+
+	public void setWelcome(String welcome) {
+		this.welcome.setText(welcome);;
+	}
+
+	public String getMessage() {
+		return message.getText();
+	}
+
+	public void setMessage(String message) {
+		this.message.setText(message);
+	}
 	
 	
 

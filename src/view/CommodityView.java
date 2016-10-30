@@ -27,10 +27,11 @@ public class CommodityView extends JFrame {
 	JButton COMMODITY_ADD, COMMODITY_DEL, COMMODITY_UPD, COMMODITY_FIN, COMMODITY_SHO;
 	String name = "";
 	String occuption = "";
+	JLabel welcome;
+	JLabel message;
 	Package Package = new Package();
 
-	public void addListener(ClientController ActionListener) {
-
+	public CommodityView() {
 		login = new JButton("登录");
 		stock = new JButton("库存");
 		commodity = new JButton("商品");
@@ -39,6 +40,31 @@ public class CommodityView extends JFrame {
 		customer = new JButton("客户");
 		account = new JButton("账目");
 
+		COMMODITY_ADD = new JButton("增加");
+		COMMODITY_DEL = new JButton("删除");
+		COMMODITY_UPD = new JButton("更新");
+		COMMODITY_FIN = new JButton("查找");
+		COMMODITY_SHO = new JButton("显示");
+
+		welcome = new JLabel();
+		message = new JLabel();
+
+	}
+
+	public void clear() {
+		if (basebox != null) {
+			remove(basebox);
+		}
+		if (message.getText() != "") {
+			message.setText("");
+		}
+		if (welcome.getText() != "") {
+			welcome.setText("");
+		}
+
+	}
+
+	public void addListener(ClientController ActionListener) {
 		login.addActionListener(ActionListener);
 		commodity.addActionListener(ActionListener);
 		stock.addActionListener(ActionListener);
@@ -46,12 +72,6 @@ public class CommodityView extends JFrame {
 		export.addActionListener(ActionListener);
 		customer.addActionListener(ActionListener);
 		account.addActionListener(ActionListener);
-
-		COMMODITY_ADD = new JButton("增加");
-		COMMODITY_DEL = new JButton("删除");
-		COMMODITY_UPD = new JButton("更新");
-		COMMODITY_FIN = new JButton("查找");
-		COMMODITY_SHO = new JButton("显示");
 
 		COMMODITY_ADD.addActionListener(ActionListener);
 		COMMODITY_DEL.addActionListener(ActionListener);
@@ -169,10 +189,13 @@ public class CommodityView extends JFrame {
 		basebox.add(contentBox);
 		basebox.add(Box.createHorizontalStrut(8));
 
-		JLabel welcome = new JLabel("welcome" + " " + name + " " + occuption);
+
+		welcome.setText("welcome"+" "+name+" "+occuption);
 		add(welcome, BorderLayout.NORTH);
-		add(basebox, BorderLayout.CENTER);
-		this.setSize(600, 400);
+        add(basebox, BorderLayout.CENTER);
+        add(message,BorderLayout.SOUTH);
+		
+		this.setSize(650, 400);
 		setTitle("商品");
 		setVisible(true);
 		setLocation(400, 250);
@@ -393,6 +416,21 @@ public class CommodityView extends JFrame {
 
 	public void setPackage(Package package1) {
 		Package = package1;
+	}
+	public String getWelcome() {
+		return welcome.getText();
+	}
+
+	public void setWelcome(String welcome) {
+		this.welcome.setText(welcome);;
+	}
+
+	public String getMessage() {
+		return message.getText();
+	}
+
+	public void setMessage(String message) {
+		this.message.setText(message);
 	}
 
 }

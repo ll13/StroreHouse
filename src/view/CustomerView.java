@@ -26,9 +26,11 @@ public class CustomerView extends JFrame {
 	JButton CUSTOMER_ADD, CUSTOMER_DEL, CUSTOMER_UPD, CUSTOMER_FIN, CUSTOMER_SHO;
 	String name = "";
 	String occuption = "";
+	JLabel welcome;
+	JLabel message;
 	Package Package = new Package();
 
-	public void addListener(ClientController ActionListener) {
+	public CustomerView() {
 		login = new JButton("登录");
 		stock = new JButton("库存");
 		commodity = new JButton("商品");
@@ -37,19 +39,40 @@ public class CustomerView extends JFrame {
 		customer = new JButton("客户");
 		account = new JButton("账目");
 
+		CUSTOMER_ADD = new JButton("增加");
+		CUSTOMER_DEL = new JButton("删除");
+		CUSTOMER_UPD = new JButton("更新");
+		CUSTOMER_FIN = new JButton("查找");
+		CUSTOMER_SHO = new JButton("显示");
+
+		welcome = new JLabel();
+		message = new JLabel();
+
+	}
+
+	public void clear() {
+		if (basebox != null) {
+			remove(basebox);
+		}
+		if (message.getText() != "") {
+			message.setText("");
+		}
+		if (welcome.getText() != "") {
+			welcome.setText("");
+		}
+
+	}
+
+	public void addListener(ClientController ActionListener) {
+		
+
 		login.addActionListener(ActionListener);
 		commodity.addActionListener(ActionListener);
 		stock.addActionListener(ActionListener);
 		Import.addActionListener(ActionListener);
 		export.addActionListener(ActionListener);
 		customer.addActionListener(ActionListener);
-		account.addActionListener(ActionListener);
-
-		CUSTOMER_ADD = new JButton("增加");
-		CUSTOMER_DEL = new JButton("删除");
-		CUSTOMER_UPD = new JButton("更新");
-		CUSTOMER_FIN = new JButton("查找");
-		CUSTOMER_SHO = new JButton("显示");
+		account.addActionListener(ActionListener);		
 
 		CUSTOMER_ADD.addActionListener(ActionListener);
 		CUSTOMER_DEL.addActionListener(ActionListener);
@@ -149,10 +172,11 @@ public class CustomerView extends JFrame {
 		basebox.add(Box.createHorizontalStrut(8));
 		basebox.add(contentBox);
 		basebox.add(Box.createHorizontalStrut(8));
-
-		JLabel welcome = new JLabel("welcome" + " " + name + " " + occuption);
+		welcome.setText("welcome"+" "+name+" "+occuption);
 		add(welcome, BorderLayout.NORTH);
-		add(basebox, BorderLayout.CENTER);
+        add(basebox, BorderLayout.CENTER);
+        add(message,BorderLayout.SOUTH);
+		
 		this.setSize(600, 400);
 		setTitle("客户");
 		setVisible(true);
@@ -327,5 +351,19 @@ public class CustomerView extends JFrame {
 	public void setPackage(Package package1) {
 		Package = package1;
 	}
+	public String getWelcome() {
+		return welcome.getText();
+	}
 
+	public void setWelcome(String welcome) {
+		this.welcome.setText(welcome);;
+	}
+
+	public String getMessage() {
+		return message.getText();
+	}
+
+	public void setMessage(String message) {
+		this.message.setText(message);
+	}
 }

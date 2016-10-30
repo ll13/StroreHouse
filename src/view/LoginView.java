@@ -22,18 +22,30 @@ public class LoginView extends JFrame {
 	JRadioButton accountant;
 	ButtonGroup occupation;
 	JButton login_in,login_out;
+	JLabel message;
 	
-	public void addListener(ClientController ActionListener){
+	
+	public LoginView(){
 		login_in=new JButton("µÇÂ¼");
 		login_out=new JButton("È¡Ïû");
+	    message=new JLabel();
+		
+	}
+	public void addListener(ClientController ActionListener){
+		
 		login_in.addActionListener(ActionListener);
 		login_out.addActionListener(ActionListener);
 	}
-	
-	public void run() {
+	public void clear(){
 		if(basebox!=null){
-			remove(basebox);}
-			
+			remove(basebox);
+			}
+		if(message.getText()!=""){
+			message.setText("");
+		}		
+		
+	}
+	public void run() {
 		
 		box1 = Box.createHorizontalBox();
 		box2=Box.createHorizontalBox();
@@ -81,17 +93,18 @@ public class LoginView extends JFrame {
 		box4.add(Box.createHorizontalStrut(28));
         
 		basebox.add(box1);
-		basebox.add(Box.createVerticalStrut(15));
+		basebox.add(Box.createVerticalStrut(10));
 		basebox.add(box2);
-		basebox.add(Box.createVerticalStrut(15));
+		basebox.add(Box.createVerticalStrut(10));
 		basebox.add(box3);
-		basebox.add(Box.createVerticalStrut(15));
+		basebox.add(Box.createVerticalStrut(10));
 		basebox.add(box4);
-		basebox.add(Box.createVerticalStrut(15));
+		basebox.add(Box.createVerticalStrut(10));
 		setTitle("login");
 		add(basebox, BorderLayout.CENTER);
+		add(message,BorderLayout.SOUTH);
 		
-		this.setSize(300,200);		
+		this.setSize(300,220);		
 	    setVisible(true);
 		setTitle("µÇÂ¼");
         setLocation(400, 250);
@@ -155,7 +168,16 @@ public class LoginView extends JFrame {
 	public void setLogin_out(JButton login_out) {
 		this.login_out = login_out;
 	}
+
+	public String getMessage() {
+		return message.getText();
+	}
+
+	public void setMessage(String message) {
+		this.message.setText(message);;;
+	}
   
+	
 
 	
 }

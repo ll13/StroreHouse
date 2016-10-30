@@ -27,9 +27,11 @@ public class ExportView extends JFrame {
 			EXPORT_SHO_BEGINDATE, EXPORT_SHO_ENDDATE;
 	String name = "";
 	String occuption = "";
+	JLabel welcome;
+	JLabel message;
 	Package Package = new Package();
 
-	public void addListener(ClientController ActionListener) {
+	public ExportView() {
 		login = new JButton("登录");
 		stock = new JButton("库存");
 		commodity = new JButton("商品");
@@ -37,6 +39,32 @@ public class ExportView extends JFrame {
 		export = new JButton("销售");
 		customer = new JButton("客户");
 		account = new JButton("账目");
+
+		EXPORT_ADD = new JButton("创建进货单");
+		EXPORT_DEL = new JButton("创建退货单");
+		EXPORT_SHO = new JButton("查看单据");
+
+
+		welcome = new JLabel();
+		message = new JLabel();
+
+	}
+
+	public void clear() {
+		if (basebox != null) {
+			remove(basebox);
+		}
+		if (message.getText() != "") {
+			message.setText("");
+		}
+		if (welcome.getText() != "") {
+			welcome.setText("");
+		}
+
+	}
+
+	public void addListener(ClientController ActionListener) {
+		
 
 		login.addActionListener(ActionListener);
 		commodity.addActionListener(ActionListener);
@@ -46,10 +74,7 @@ public class ExportView extends JFrame {
 		customer.addActionListener(ActionListener);
 		account.addActionListener(ActionListener);
 
-		EXPORT_ADD = new JButton("创建进货单");
-		EXPORT_DEL = new JButton("创建退货单");
-		EXPORT_SHO = new JButton("查看单据");
-
+	
 		EXPORT_ADD.addActionListener(ActionListener);
 		EXPORT_DEL.addActionListener(ActionListener);
 		EXPORT_SHO.addActionListener(ActionListener);
@@ -157,10 +182,11 @@ public class ExportView extends JFrame {
 		basebox.add(contentBox);
 		basebox.add(Box.createHorizontalStrut(8));
 
-		JLabel welcome = new JLabel("welcome" + " " + name + " " + occuption);
+		welcome.setText("welcome"+" "+name+" "+occuption);
 		add(welcome, BorderLayout.NORTH);
-		add(basebox, BorderLayout.CENTER);
-		this.setSize(750, 400);
+        add(basebox, BorderLayout.CENTER);
+        add(message,BorderLayout.SOUTH);
+		this.setSize(800, 400);
 		setTitle("销售");
 		setVisible(true);
 		setLocation(400, 250);
@@ -367,4 +393,19 @@ public class ExportView extends JFrame {
 		Package = package1;
 	}
 
+	public String getWelcome() {
+		return welcome.getText();
+	}
+
+	public void setWelcome(String welcome) {
+		this.welcome.setText(welcome);;
+	}
+
+	public String getMessage() {
+		return message.getText();
+	}
+
+	public void setMessage(String message) {
+		this.message.setText(message);
+	}
 }
