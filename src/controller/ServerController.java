@@ -11,9 +11,9 @@ import remote.Server;
 import vo.Package;
 
 public class ServerController {
-	Server server = new Server();
-	Package getPackage = new Package();
-	Package result = new Package();
+	Server server ;
+	Package getPackage;
+	Package result;
 
 	CommodityModel commodityModel;
 	StockModel stockModel;
@@ -21,14 +21,40 @@ public class ServerController {
 	ExportModel exportModel;
 	CustomerModel customerModel;
 	AccountModel accountModel;
-	IDModel idModel = new IDModel();
-
+	IDModel idModel;
+	
+    public ServerController(){
+    	 server = new Server();
+    	 getPackage = new Package();
+    	 result = new Package();
+    	 commodityModel=new CommodityModel();
+    	 stockModel=new StockModel();
+    	 importModel=new ImportModel();
+    	 exportModel=new ExportModel();
+    	 customerModel=new CustomerModel();
+    	 accountModel=new AccountModel();
+    	 idModel = new IDModel();
+    	
+    }
 	public Package doOperation(Package operation) {
 		Package result = new Package();
 		String[] operationCompare = operation.getOperation().split("/");
 		String[] content = operationCompare[1].split(";");
 		if (operationCompare[0].equals("login_in")) {
 			result = idModel.checkId(content);
+			if(result.getResult().equals("find")){
+				if(result.getIdSet()[0][2].equals("stockmane")){
+					result.setCommoditySet((commodityModel.showCommodity(content)).getCommoditySet());
+					result.setStockSet(stockModel.showStock(content).getStockSet());						
+				}else if(result.getIdSet()[0][2].equals("salesman")){
+					result.setImportSet(importModel.showImport(content).getImportSet());
+					result.setExportSet(exportModel.showExport(content).getExportSet());
+					result.setCustomerSet(customerModel.showCustomer(content).getCustomerSet());						
+				}else if(result.getIdSet()[0][2].equals("accountant")){
+					result.setAccountAllSet(accountModel.showAccountAll(content).getAccountAllSet());
+					result.setAccountDetailSet(accountModel.showAccountDetail(content).getAccountDetailSet());					
+				}
+			}
 		}else if (operationCompare[0].equals("commodity_add")) {
 			result=commodityModel.addCommodity(content);
 			stockModel.addCommodityStock(content);

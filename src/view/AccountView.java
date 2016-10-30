@@ -20,7 +20,7 @@ public class AccountView extends JFrame {
 	private static final long serialVersionUID = 1L;
 	Box tableBox, operationBox, guidenceBox, contentBox, basebox;
 	Box box1, box2, box3;
-	JTextField ACCOUNT_CUSTOMER, ACCOUNT_IN_MONEY, ACCOUNT_OUT_CUSTOMER, ACCOUNT_OUT_MONEY, ACCOUNT_INI_MONEY;
+	JTextField ACCOUNT_IN_CUSTOMER, ACCOUNT_IN_MONEY, ACCOUNT_OUT_CUSTOMER, ACCOUNT_OUT_MONEY, ACCOUNT_INI_MONEY;
 	JButton ACCOUNT_IN, ACCOUNT_OUT, ACCOUNT_ALL, ACCOUNT_DET, ACCOUNT_INI;
 	String name = "";
 	String occuption = "";
@@ -91,7 +91,7 @@ public class AccountView extends JFrame {
 		tableBox.add(scrollPane_detail);
 		tableBox.add(Box.createVerticalStrut(8));
 
-		ACCOUNT_CUSTOMER = new JTextField(15);
+		ACCOUNT_IN_CUSTOMER = new JTextField(15);
 		ACCOUNT_IN_MONEY = new JTextField(15);
 		ACCOUNT_OUT_CUSTOMER = new JTextField(15);
 		ACCOUNT_OUT_MONEY = new JTextField(15);
@@ -104,7 +104,7 @@ public class AccountView extends JFrame {
 		box1.add(Box.createHorizontalStrut(8));
 		box1.add(ACCOUNT_IN);
 		box1.add(new JLabel("¿Í»§"));
-		box1.add(ACCOUNT_CUSTOMER);
+		box1.add(ACCOUNT_IN_CUSTOMER);
 		box1.add(new JLabel("½ð¶î"));
 		box1.add(ACCOUNT_IN_MONEY);
 		box1.add(Box.createHorizontalStrut(8));
@@ -155,8 +155,8 @@ public class AccountView extends JFrame {
 	}
 
 
-	public String getACCOUNT_CUSTOMER() {
-		return ACCOUNT_CUSTOMER.getText();
+	public String getACCOUNT_IN_CUSTOMER() {
+		return ACCOUNT_IN_CUSTOMER.getText();
 	}
 
 	public String getACCOUNT_IN_MONEY() {
@@ -205,8 +205,8 @@ public class AccountView extends JFrame {
 
 	
 
-	public void setACCOUNT_CUSTOMER(JTextField aCCOUNT_CUSTOMER) {
-		ACCOUNT_CUSTOMER = aCCOUNT_CUSTOMER;
+	public void setACCOUNT_IN_CUSTOMER(JTextField aCCOUNT_IN_CUSTOMER) {
+		ACCOUNT_IN_CUSTOMER = aCCOUNT_IN_CUSTOMER;
 	}
 
 	public void setACCOUNT_IN_MONEY(JTextField aCCOUNT_IN_MONEY) {
