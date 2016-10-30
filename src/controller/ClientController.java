@@ -186,6 +186,10 @@ public class ClientController implements ActionListener {
 	}
 
 	public void commodity_add() {
+		String operation = "commodity_add" + "/" + commodityview.getCOMMODITY_ADD_NAME()+ ";" +commodityview.getCOMMODITY_ADD_TYPE() + ";"
+				+ commodityview.getCOMMODITY_ADD_MIP()+";"+commodityview.getCOMMODITY_ADD_MEP();
+		package1.setOperation(operation);
+		client.sendData(package1);
 	}
 
 	public void commodity_del() {

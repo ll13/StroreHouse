@@ -3,6 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="E:/download/junit-4.10.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/学习软件/apache-tomcat-7.0.56-windows-x64 (1)/apache-tomcat-7.0.56/webapps/jenkins/WEB-INF/lib/junit-4.11.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
