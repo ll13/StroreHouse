@@ -221,7 +221,11 @@ public class ClientController implements ActionListener {
 		client.sendData(package1);
 
 		package1 = client.getData();
-		commodityview.setPackage(package1);
+		if(package1.getCommoditySet()!=null){
+		    Package	package2=commodityview.getPackage();
+		    package2.setCommoditySet(package1.getCommoditySet());
+			commodityview.setPackage(package2);
+		};
 		commodityview.clear();
 		commodityview.setMessage(package1.getResult());
 		commodityview.run();
@@ -235,7 +239,11 @@ public class ClientController implements ActionListener {
 		client.sendData(package1);
 
 		package1 = client.getData();
-		commodityview.setPackage(package1);
+		if(package1.getCommoditySet()!=null){
+		    Package	package2=commodityview.getPackage();
+		    package2.setCommoditySet(package1.getCommoditySet());
+			commodityview.setPackage(package2);
+		};
 		commodityview.clear();
 		commodityview.setMessage(package1.getResult());
 		commodityview.run();
@@ -251,7 +259,11 @@ public class ClientController implements ActionListener {
 		client.sendData(package1);
 
 		package1 = client.getData();
-		commodityview.setPackage(package1);
+		if(package1.getCommoditySet()!=null){
+		    Package	package2=commodityview.getPackage();
+		    package2.setCommoditySet(package1.getCommoditySet());
+			commodityview.setPackage(package2);
+		};
 		commodityview.clear();
 		commodityview.setMessage(package1.getResult());
 		commodityview.run();
@@ -265,7 +277,11 @@ public class ClientController implements ActionListener {
 		client.sendData(package1);
 
 		package1 = client.getData();
-		commodityview.setPackage(package1);
+		if(package1.getCommoditySet()!=null){
+		    Package	package2=commodityview.getPackage();
+		    package2.setCommoditySet(package1.getCommoditySet());
+			commodityview.setPackage(package2);
+		};
 		commodityview.clear();
 		commodityview.setMessage(package1.getResult());
 		commodityview.run();
@@ -277,7 +293,11 @@ public class ClientController implements ActionListener {
 		client.sendData(package1);
 
 		package1 = client.getData();
-		commodityview.setPackage(package1);
+		if(package1.getCommoditySet()!=null){
+		    Package	package2=commodityview.getPackage();
+		    package2.setCommoditySet(package1.getCommoditySet());
+			commodityview.setPackage(package2);
+		};
 		commodityview.clear();
 		commodityview.setMessage(package1.getResult());
 		commodityview.run();
@@ -289,7 +309,11 @@ public class ClientController implements ActionListener {
 		client.sendData(package1);
 
 		package1 = client.getData();
-		stockview.setPackage(package1);
+		if(package1.getStockSet()!=null){
+		    Package	package2=stockview.getPackage();
+		    package2.setStockSet(package1.getStockSet());
+			stockview.setPackage(package2);
+		};
 		stockview.clear();
 		stockview.setMessage(package1.getResult());
 		stockview.run();
@@ -306,7 +330,11 @@ public class ClientController implements ActionListener {
 		client.sendData(package1);
 
 		package1 = client.getData();
-		importview.setPackage(package1);
+		if(package1.getImportSet()!=null){
+		    Package	package2=importview.getPackage();
+		    package2.setImportSet(package1.getImportSet());
+			importview.setPackage(package2);
+		};
 		importview.clear();
 		importview.setMessage(package1.getResult());
 		importview.run();
@@ -323,7 +351,11 @@ public class ClientController implements ActionListener {
 		client.sendData(package1);
 
 		package1 = client.getData();
-		importview.setPackage(package1);
+		if(package1.getImportSet()!=null){
+		    Package	package2=importview.getPackage();
+		    package2.setImportSet(package1.getImportSet());
+			importview.setPackage(package2);
+		};
 		importview.clear();
 		importview.setMessage(package1.getResult());
 		importview.run();
@@ -335,7 +367,11 @@ public class ClientController implements ActionListener {
 		client.sendData(package1);
 
 		package1 = client.getData();
-		importview.setPackage(package1);
+		if(package1.getImportSet()!=null){
+		    Package	package2=importview.getPackage();
+		    package2.setImportSet(package1.getImportSet());
+			importview.setPackage(package2);
+		};
 		importview.clear();
 		importview.setMessage(package1.getResult());
 		importview.run();
@@ -352,7 +388,11 @@ public class ClientController implements ActionListener {
 		client.sendData(package1);
 
 		package1 = client.getData();
-		exportview.setPackage(package1);
+		if(package1.getExportSet()!=null){
+		    Package	package2=exportview.getPackage();
+		    package2.setExportSet(package1.getExportSet());
+			exportview.setPackage(package2);
+		};
 		exportview.clear();
 		exportview.setMessage(package1.getResult());
 		exportview.run();
@@ -369,7 +409,11 @@ public class ClientController implements ActionListener {
 		client.sendData(package1);
 
 		package1 = client.getData();
-		exportview.setPackage(package1);
+		if(package1.getExportSet()!=null){
+		    Package	package2=exportview.getPackage();
+		    package2.setExportSet(package1.getExportSet());
+			exportview.setPackage(package2);
+		};
 		exportview.clear();
 		exportview.setMessage(package1.getResult());
 		exportview.run();
@@ -381,7 +425,11 @@ public class ClientController implements ActionListener {
 		client.sendData(package1);
 
 		package1 = client.getData();
-		exportview.setPackage(package1);
+		if(package1.getExportSet()!=null){
+		    Package	package2=exportview.getPackage();
+		    package2.setExportSet(package1.getExportSet());
+			exportview.setPackage(package2);
+		};
 		exportview.clear();
 		exportview.setMessage(package1.getResult());
 		exportview.run();
@@ -396,7 +444,11 @@ public class ClientController implements ActionListener {
 		client.sendData(package1);
 
 		package1 = client.getData();
-		customerview.setPackage(package1);
+		if(package1.getCustomerSet()!=null){
+		    Package	package2=customerview.getPackage();
+		    package2.setCustomerSet(package1.getCustomerSet());
+			customerview.setPackage(package2);
+		};
 		customerview.clear();
 		customerview.setMessage(package1.getResult());
 		customerview.run();
@@ -409,7 +461,11 @@ public class ClientController implements ActionListener {
 		client.sendData(package1);
 
 		package1 = client.getData();
-		customerview.setPackage(package1);
+		if(package1.getCustomerSet()!=null){
+		    Package	package2=customerview.getPackage();
+		    package2.setCustomerSet(package1.getCustomerSet());
+			customerview.setPackage(package2);
+		};
 		customerview.clear();
 		customerview.setMessage(package1.getResult());
 		customerview.run();
@@ -424,7 +480,11 @@ public class ClientController implements ActionListener {
 		client.sendData(package1);
 
 		package1 = client.getData();
-		customerview.setPackage(package1);
+		if(package1.getCustomerSet()!=null){
+		    Package	package2=customerview.getPackage();
+		    package2.setCustomerSet(package1.getCustomerSet());
+			customerview.setPackage(package2);
+		};
 		customerview.clear();
 		customerview.setMessage(package1.getResult());
 		customerview.run();
@@ -437,7 +497,11 @@ public class ClientController implements ActionListener {
 		client.sendData(package1);
 
 		package1 = client.getData();
-		customerview.setPackage(package1);
+		if(package1.getCustomerSet()!=null){
+		    Package	package2=customerview.getPackage();
+		    package2.setCustomerSet(package1.getCustomerSet());
+			customerview.setPackage(package2);
+		};
 		customerview.clear();
 		customerview.setMessage(package1.getResult());
 		customerview.run();
@@ -450,7 +514,11 @@ public class ClientController implements ActionListener {
 		client.sendData(package1);
 
 		package1 = client.getData();
-		customerview.setPackage(package1);
+		if(package1.getCustomerSet()!=null){
+		    Package	package2=customerview.getPackage();
+		    package2.setCustomerSet(package1.getCustomerSet());
+			customerview.setPackage(package2);
+		};
 		customerview.clear();
 		customerview.setMessage(package1.getResult());
 		customerview.run();
@@ -463,10 +531,19 @@ public class ClientController implements ActionListener {
 		client.sendData(package1);
 
 		package1 = client.getData();
-		customerview.setPackage(package1);
-		customerview.clear();
-		customerview.setMessage(package1.getResult());
-		customerview.run();
+		if(package1.getAccountAllSet()!=null){
+		    Package	package2=accountview.getPackage();
+		    package2.setAccountAllSet(package1.getAccountAllSet());
+			accountview.setPackage(package2);
+		};
+		if(package1.getAccountDetailSet()!=null){
+		    Package	package2=accountview.getPackage();
+		    package2.setAccountDetailSet(package1.getAccountDetailSet());
+			accountview.setPackage(package2);
+		};
+		accountview.clear();
+		accountview.setMessage(package1.getResult());
+		accountview.run();
 	}
 
 	public void account_out() {
@@ -476,10 +553,19 @@ public class ClientController implements ActionListener {
 			client.sendData(package1);
 
 			package1 = client.getData();
-			customerview.setPackage(package1);
-			customerview.clear();
-			customerview.setMessage(package1.getResult());
-			customerview.run();
+			if(package1.getAccountAllSet()!=null){
+			    Package	package2=accountview.getPackage();
+			    package2.setAccountAllSet(package1.getAccountAllSet());
+				accountview.setPackage(package2);
+			};
+			if(package1.getAccountDetailSet()!=null){
+			    Package	package2=accountview.getPackage();
+			    package2.setAccountDetailSet(package1.getAccountDetailSet());
+				accountview.setPackage(package2);
+			};
+			accountview.clear();
+			accountview.setMessage(package1.getResult());
+			accountview.run();
 	}
 
 	public void account_all() {
@@ -489,10 +575,15 @@ public class ClientController implements ActionListener {
 			client.sendData(package1);
 
 			package1 = client.getData();
-			customerview.setPackage(package1);
-			customerview.clear();
-			customerview.setMessage(package1.getResult());
-			customerview.run();
+			if(package1.getAccountAllSet()!=null){
+			    Package	package2=accountview.getPackage();
+			    package2.setAccountAllSet(package1.getAccountAllSet());
+				accountview.setPackage(package2);
+			};
+			
+			accountview.clear();
+			accountview.setMessage(package1.getResult());
+			accountview.run();
 	}
 
 	public void account_det() {
@@ -502,10 +593,15 @@ public class ClientController implements ActionListener {
 			client.sendData(package1);
 
 			package1 = client.getData();
-			customerview.setPackage(package1);
-			customerview.clear();
-			customerview.setMessage(package1.getResult());
-			customerview.run();
+			
+			if(package1.getAccountDetailSet()!=null){
+			    Package	package2=accountview.getPackage();
+			    package2.setAccountDetailSet(package1.getAccountDetailSet());
+				accountview.setPackage(package2);
+			};
+			accountview.clear();
+			accountview.setMessage(package1.getResult());
+			accountview.run();
 	}
 
 	public void account_ini() {
@@ -515,10 +611,14 @@ public class ClientController implements ActionListener {
 			client.sendData(package1);
 
 			package1 = client.getData();
-			customerview.setPackage(package1);
-			customerview.clear();
-			customerview.setMessage(package1.getResult());
-			customerview.run();
+			if(package1.getAccountAllSet()!=null){
+			    Package	package2=accountview.getPackage();
+			    package2.setAccountAllSet(package1.getAccountAllSet());
+				accountview.setPackage(package2);
+			};
+			accountview.clear();
+			accountview.setMessage(package1.getResult());
+			accountview.run();
 	}
 
 	public static void main(String[] args) {
