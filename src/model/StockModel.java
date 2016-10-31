@@ -113,14 +113,15 @@ public class StockModel {
 		read();
 
 		String[] stockFind = new String[2];
-		stockFind[0] = stockImport[0];
-		stockFind[1] = stockImport[1];
+		stockFind[0] = stockImport[1];
+		stockFind[1] = stockImport[2];
 		Stock stockFindResult = null;
-		stockFindResult = stringToList(findStock(stockFind).getStockSet()).get(0);
-		if (stockFindResult == null) {
+		
+		if (findStock(stockFind).getStockSet()==null) {
 			package1.setResult("stock import add not find");
 			return package1;
 		}
+		stockFindResult = stringToList(findStock(stockFind).getStockSet()).get(0);
 		stockList.remove(point);
 
 		int stockAllPrice, importAllPrice, stockMinPrice, stockNumber;
@@ -151,15 +152,15 @@ public class StockModel {
 		read();
 
 		String[] stockFind = new String[2];
-		stockFind[0] = stockImport[0];
-		stockFind[1] = stockImport[1];
+		stockFind[0] = stockImport[1];
+		stockFind[1] = stockImport[2];
 		Stock stockFindResult = null;
-		stockFindResult = stringToList(findStock(stockFind).getStockSet()).get(0);
-		if (stockFindResult == null) {
+		
+		if (findStock(stockFind).getStockSet()==null) {
 			package1.setResult("stock import del not find");
 			return package1;
 		}
-
+		stockFindResult = stringToList(findStock(stockFind).getStockSet()).get(0);
 		if (stockFindResult.getImport_number() != Integer.parseInt(stockImport[3])
 				|| stockFindResult.getImport_MINprice() != Integer.parseInt(stockImport[4])) {
 			package1.setResult("stock import del cannot import del");
@@ -195,14 +196,15 @@ public class StockModel {
 		read();
 
 		String[] stockFind = new String[2];
-		stockFind[0] = stockExport[0];
-		stockFind[1] = stockExport[1];
+		stockFind[0] = stockExport[1];
+		stockFind[1] = stockExport[2];
 		Stock stockFindResult = null;
-		stockFindResult = stringToList(findStock(stockFind).getStockSet()).get(0);
-		if (stockFindResult == null) {
+		
+		if (findStock(stockFind).getStockSet()==null) {
 			package1.setResult("stock export add not find");
 			return package1;
 		}
+		stockFindResult = stringToList(findStock(stockFind).getStockSet()).get(0);
 		stockList.remove(point);
 
 		int stockAllPrice, stockMinPrice, stockNumber, exportAllPrice;
@@ -233,15 +235,15 @@ public class StockModel {
 		read();
 
 		String[] stockFind = new String[2];
-		stockFind[0] = stockExport[0];
-		stockFind[1] = stockExport[1];
+		stockFind[0] = stockExport[1];
+		stockFind[1] = stockExport[2];
 		Stock stockFindResult = null;
-		stockFindResult = stringToList(findStock(stockFind).getStockSet()).get(0);
-		if (stockFindResult == null) {
+		
+		if (findStock(stockFind).getStockSet()==null) {
 			package1.setResult("stock export del not find");
 			return package1;
 		}
-
+		stockFindResult = stringToList(findStock(stockFind).getStockSet()).get(0);
 		if (stockFindResult.getExport_number() != Integer.parseInt(stockExport[3])
 				|| stockFindResult.getExport_MINprice() != Integer.parseInt(stockExport[4])) {
 			package1.setResult("stock export del cannot export del");
@@ -280,13 +282,12 @@ public class StockModel {
 		String[] stockFind = new String[2];
 		stockFind[0] = commodityAddStock[0];
 		stockFind[1] = commodityAddStock[1];
-		Stock stockFindResult = null;
-		stockFindResult = stringToList(findStock(stockFind).getStockSet()).get(0);
-		if (stockFindResult != null) {
+		
+		if (findStock(stockFind).getStockSet()!=null) {
 			package1.setResult("stock commodity add exist");
 			return package1;
 		}
-
+		
 		Stock stockNew = new Stock();
 
 		stockNew.setName(commodityAddStock[0]);
@@ -306,6 +307,36 @@ public class StockModel {
 		result = stockList;
 		package1.setStockSet(listToString(result));
 		package1.setResult("stock commodity add success");
+
+		return package1;
+
+	}
+
+	public Package delCommodityStock(String[] commodityDelStock) {
+		Package package1 = new Package();
+		ArrayList<Stock> result = new ArrayList<Stock>();
+		read();
+
+		String[] stockFind = new String[2];
+		stockFind[0] = commodityDelStock[0];
+		stockFind[1] = commodityDelStock[1];
+		Stock stockFindResult = null;
+		if (findStock(stockFind).getStockSet()==null) {
+			package1.setResult("stock commodity not find");
+			return package1;
+		}
+		
+		stockFindResult = stringToList(findStock(stockFind).getStockSet()).get(0);
+		if (stockFindResult.getStock_number() != 0) {
+			package1.setResult("commodity delete cannot delete");
+			return package1;
+		}
+
+		stockList.remove(point);
+		write();
+		result = stockList;
+		package1.setStockSet(listToString(result));
+		package1.setResult("stock commodity delete success");
 
 		return package1;
 

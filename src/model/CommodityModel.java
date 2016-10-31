@@ -98,13 +98,15 @@ public class CommodityModel {
 		commodityFind[0] = commodityDelete[0];
 		commodityFind[1] = commodityDelete[1];
 		Commodity commodityFindResult = null;
-		commodityFindResult = stringToList(findCommodity(commodityFind).getCommoditySet()).get(0);
-		if (commodityFindResult == null) {
+		
+		if (findCommodity(commodityFind).getCommoditySet()==null) {
 			package1.setResult("commodity delete not find");
 			return package1;
 		}
+		commodityFindResult = stringToList(findCommodity(commodityFind).getCommoditySet()).get(0);
 		if (commodityFindResult.getNumber() != 0) {
 			package1.setResult("commodity delete cannot delete");
+			return package1;
 		}
         
 		commodityList.remove(point);
@@ -124,11 +126,12 @@ public class CommodityModel {
 		commodityFind[0] = commodityUpdate[0];
 		commodityFind[1] = commodityUpdate[1];
 		Commodity commodityFindResult = null;
-		commodityFindResult = stringToList(findCommodity(commodityFind).getCommoditySet()).get(0);
-		if (commodityFindResult == null) {
+		
+		if (findCommodity(commodityFind).getCommoditySet()==null) {
 			package1.setResult("commodity update not find");
 			return package1;
 		}
+		commodityFindResult = stringToList(findCommodity(commodityFind).getCommoditySet()).get(0);
 		commodityList.remove(point);
 		commodityFindResult.setFirst_import_price(Integer.parseInt(commodityUpdate[2]));
 		commodityFindResult.setFirst_export_price(Integer.parseInt(commodityUpdate[3]));
@@ -147,18 +150,19 @@ public class CommodityModel {
 		read();
 
 		String[] commodityFind = new String[2];
-		commodityFind[0] = commodityImport[0];
-		commodityFind[1] = commodityImport[1];
+		commodityFind[0] = commodityImport[1];
+		commodityFind[1] = commodityImport[2];
 		Commodity commodityFindResult = null;
-		commodityFindResult = stringToList(findCommodity(commodityFind).getCommoditySet()).get(0);
-		if (commodityFindResult == null) {
+		
+		if ( findCommodity(commodityFind).getCommoditySet()==null) {
 			package1.setResult("commodity import add not find");
 			return package1;
 		}
+		commodityFindResult = stringToList(findCommodity(commodityFind).getCommoditySet()).get(0);
 		commodityList.remove(point);
 		int number = commodityFindResult.getNumber();
-		commodityFindResult.setNumber(Integer.parseInt(commodityImport[2]) + number);
-		commodityFindResult.setImport_price(Integer.parseInt(commodityImport[3]));
+		commodityFindResult.setNumber(Integer.parseInt(commodityImport[3]) + number);
+		commodityFindResult.setImport_price(Integer.parseInt(commodityImport[4]));
 		commodityList.add(commodityFindResult);
 		write();
 		result = commodityList;
@@ -175,18 +179,19 @@ public class CommodityModel {
 		read();
 
 		String[] commodityFind = new String[2];
-		commodityFind[0] = commodityImport[0];
-		commodityFind[1] = commodityImport[1];
+		commodityFind[0] = commodityImport[1];
+		commodityFind[1] = commodityImport[2];
 		Commodity commodityFindResult = null;
-		commodityFindResult = stringToList(findCommodity(commodityFind).getCommoditySet()).get(0);
-		if (commodityFindResult == null) {
+		
+		if (findCommodity(commodityFind).getCommoditySet()==null) {
 			package1.setResult("commodity import del not find");
 			return package1;
 		}
+		commodityFindResult = stringToList(findCommodity(commodityFind).getCommoditySet()).get(0);
 		commodityList.remove(point);
 		int number = commodityFindResult.getNumber();
-		commodityFindResult.setNumber(Integer.parseInt(commodityImport[2]) - number);
-		commodityFindResult.setImport_price(Integer.parseInt(commodityImport[3]));
+		commodityFindResult.setNumber(number-Integer.parseInt( commodityImport[3]));
+		commodityFindResult.setImport_price(Integer.parseInt(commodityImport[4]));
 		commodityList.add(commodityFindResult);
 		
 		write();
@@ -204,19 +209,19 @@ public class CommodityModel {
 		read();
 
 		String[] commodityFind = new String[2];
-		commodityFind[0] = commodityExport[0];
-		commodityFind[1] = commodityExport[1];
+		commodityFind[0] = commodityExport[1];
+		commodityFind[1] = commodityExport[2];
 		Commodity commodityFindResult = null;
-		commodityFindResult = stringToList(findCommodity(commodityFind).getCommoditySet()).get(0);
-		if (commodityFindResult == null) {
+		
+		if (findCommodity(commodityFind).getCommoditySet()==null) {
 			package1.setResult("commodity export add not find");
 			return package1;
 		}
-		
+		commodityFindResult = stringToList(findCommodity(commodityFind).getCommoditySet()).get(0);
 		commodityList.remove(point);
 		int number = commodityFindResult.getNumber();
-		commodityFindResult.setNumber(number - Integer.parseInt(commodityExport[2]));
-		commodityFindResult.setExport_price(Integer.parseInt(commodityExport[3]));
+		commodityFindResult.setNumber(number - Integer.parseInt(commodityExport[3]));
+		commodityFindResult.setExport_price(Integer.parseInt(commodityExport[4]));
 		commodityList.add(commodityFindResult);
 		
 		write();
@@ -233,18 +238,19 @@ public class CommodityModel {
 		read();
 
 		String[] commodityFind = new String[2];
-		commodityFind[0] = commodityExport[0];
-		commodityFind[1] = commodityExport[1];
+		commodityFind[0] = commodityExport[1];
+		commodityFind[1] = commodityExport[2];
 		Commodity commodityFindResult = null;
-		commodityFindResult = stringToList(findCommodity(commodityFind).getCommoditySet()).get(0);
-		if (commodityFindResult == null) {
+		
+		if (findCommodity(commodityFind).getCommoditySet()==null) {
 			package1.setResult("commodity export del not find");
 			return package1;
 		}
+		commodityFindResult = stringToList(findCommodity(commodityFind).getCommoditySet()).get(0);
 		commodityList.remove(point);
 		int number = commodityFindResult.getNumber();
-		commodityFindResult.setNumber(number + Integer.parseInt(commodityExport[2]));
-		commodityFindResult.setExport_price(Integer.parseInt(commodityExport[3]));
+		commodityFindResult.setNumber(number + Integer.parseInt(commodityExport[3]));
+		commodityFindResult.setExport_price(Integer.parseInt(commodityExport[4]));
 		commodityList.add(commodityFindResult);
 		
 		write();

@@ -60,6 +60,7 @@ public class ServerController {
 			stockModel.addCommodityStock(content);
 		} else if (operationCompare[0].equals("commodity_del")) {
 			result=commodityModel.deleteCommodity(content);
+			stockModel.delCommodityStock(content);
 		} else if (operationCompare[0].equals("commodity_upd")) {
 			result=commodityModel.updateCommodity(content);
 		}else if (operationCompare[0].equals("commodity_fin")) {
@@ -123,7 +124,9 @@ public class ServerController {
 		return result;
 
 	}
-
+    public void closeServer(){
+    	server.close();
+    }
 	public static void main(String[] args) {
 		ServerController s = new ServerController();
 		boolean stop = false;
@@ -140,6 +143,8 @@ public class ServerController {
 
 			}
 		}
+		
+		s.closeServer();
 
 	}
 }

@@ -9,6 +9,7 @@ import vo.Package;
 public class ClientController implements ActionListener {
 	Client client;
 	Package package1;
+	Package idpackage;
 	String name, occupation;
 
 	StorehouseView storehouseview;
@@ -31,6 +32,7 @@ public class ClientController implements ActionListener {
 		accountview = new AccountView();
 		client = new Client();
 		package1 = new Package();
+		idpackage=new Package();
 
 	}
 
@@ -61,7 +63,7 @@ public class ClientController implements ActionListener {
 		} else if (event.getSource().equals(loginview.getLogin_out())) {
 			login_out();
 		} else if (event.getSource().equals(storehouseview.getCommodity())) {
-			if (package1.getCommoditySet() != null) {
+			if (idpackage.getCommoditySet() != null) {
 				commodityview.clear();
 				commodityview.run();
 			}
@@ -76,7 +78,7 @@ public class ClientController implements ActionListener {
 		} else if (event.getSource().equals(commodityview.getCOMMODITY_SHO())) {
 			commodity_sho();
 		} else if (event.getSource().equals(storehouseview.getStock())) {
-			if (package1.getStockSet() != null) {
+			if (idpackage.getStockSet() != null) {
 				stockview.clear();
 				stockview.run();
 			}
@@ -84,7 +86,7 @@ public class ClientController implements ActionListener {
 		} else if (event.getSource().equals(stockview.getSTOCK_SHO())) {
 			stock_sho();
 		} else if (event.getSource().equals(storehouseview.getImport())) {
-			if (package1.getImportSet() != null) {
+			if (idpackage.getImportSet() != null) {
 				importview.clear();
 				importview.run();
 			}
@@ -96,7 +98,7 @@ public class ClientController implements ActionListener {
 		} else if (event.getSource().equals(importview.getIMPORT_SHO())) {
 			import_sho();
 		} else if (event.getSource().equals(storehouseview.getExport())) {
-			if (package1.getExportSet() != null) {
+			if (idpackage.getExportSet() != null) {
 				exportview.clear();
 				exportview.run();
 			}
@@ -108,7 +110,7 @@ public class ClientController implements ActionListener {
 		} else if (event.getSource().equals(exportview.getEXPORT_SHO())) {
 			export_sho();
 		} else if (event.getSource().equals(storehouseview.getCustomer())) {
-			if (package1.getCustomerSet() != null) {
+			if (idpackage.getCustomerSet() != null) {
 				customerview.clear();
 				customerview.run();
 			}
@@ -124,7 +126,7 @@ public class ClientController implements ActionListener {
 		} else if (event.getSource().equals(customerview.getCUSTOMER_SHO())) {
 			customer_sho();
 		} else if (event.getSource().equals(storehouseview.getAccount())) {
-			if (package1.getAccountAllSet() != null) {
+			if (idpackage.getAccountAllSet() != null) {
 				accountview.clear();
 				accountview.run();
 			}
@@ -158,15 +160,15 @@ public class ClientController implements ActionListener {
 		}
 		String operation = "login_in" + "/" + loginview.getName() + ";"
 				+ new String(loginview.getPsw()) + ";" + occupation;
-		package1.setOperation(operation);
-		client.sendData(package1);
+		idpackage.setOperation(operation);
+		client.sendData(idpackage);
 
 		// get data
-		package1 = client.getData();
-		if (package1.getResult().equals("find")) {
+		idpackage = client.getData();
+		if (idpackage.getResult().equals("find")) {
 			
-			name = package1.getIdSet()[0][0];
-			this.occupation = package1.getIdSet()[0][2];
+			name = idpackage.getIdSet()[0][0];
+			this.occupation = idpackage.getIdSet()[0][2];
 			loginview.setVisible(false);
 
 			storehouseview.setName(name);
@@ -176,31 +178,31 @@ public class ClientController implements ActionListener {
 			storehouseview.run();
 
 			if (this.occupation.equals("stockmane")) {
-				commodityview.setPackage(package1);
+				commodityview.setPackage(idpackage);
 				commodityview.setName(name);
 				commodityview.setOccuption(this.occupation);
-				stockview.setPackage(package1);
+				stockview.setPackage(idpackage);
 				stockview.setName(name);
 				stockview.setOccuption(this.occupation);
 			} else if (this.occupation.equals("salesman")) {
-				importview.setPackage(package1);
+				importview.setPackage(idpackage);
 				importview.setName(name);
 				importview.setOccuption(this.occupation);
-				exportview.setPackage(package1);
+				exportview.setPackage(idpackage);
 				exportview.setName(name);
 				exportview.setOccuption(this.occupation);
-				customerview.setPackage(package1);
+				customerview.setPackage(idpackage);
 				customerview.setName(name);
 				customerview.setOccuption(this.occupation);
 			} else if (this.occupation.equals("accountant")) {
-				accountview.setPackage(package1);
+				accountview.setPackage(idpackage);
 				accountview.setName(name);
 				accountview.setOccuption(this.occupation);
 			}
 
 		}
 
-		if (package1.getResult().equals("not find")) {
+		if (idpackage.getResult().equals("not find")) {
 			loginview.clear();
 			loginview.setMessage("not find");
 			loginview.run();

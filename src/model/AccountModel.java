@@ -312,7 +312,7 @@ public class AccountModel {
 		accountAll.setSum_should_get_money(should_get);
 		accountAll.setSum_should_pay_money(should_pay);
 		
-		if(!accountAllList.isEmpty()){
+		if(accountAllList.get(0).getSum_money()!=0){
 			package1.setResult("account cannot init");
 			return package1;
 		}

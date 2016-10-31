@@ -131,13 +131,15 @@ public class CustomerModel {
 		customerFind[0] = customerDelete[0];
 		
 		Customer customerFindResult = null;
-		customerFindResult = stringToList(findCustomer(customerFind).getCustomerSet()).get(0);
-		if (customerFindResult == null) {
+		
+		if (findCustomer(customerFind).getCustomerSet()==null) {
 			package1.setResult("customer delete not find");
 			return package1;
 		}
+		customerFindResult = stringToList(findCustomer(customerFind).getCustomerSet()).get(0);
 		if (customerFindResult.getAll() != 0) {
 			package1.setResult("customer delete cannot delete");
+			return package1;
 		}
         
 		customerList.remove(point);
@@ -157,11 +159,12 @@ public class CustomerModel {
 		customerFind[0] = customerUpdate[0];
 		customerFind[1] = customerUpdate[1];
 		Customer customerFindResult = null;
-		customerFindResult = stringToList(findCustomer(customerFind).getCustomerSet()).get(0);
-		if (customerFindResult == null) {
+		
+		if (findCustomer(customerFind).getCustomerSet()==null) {
 			package1.setResult("customer update not find");
 			return package1;
 		}
+		customerFindResult = stringToList(findCustomer(customerFind).getCustomerSet()).get(0);
 		customerList.remove(point);
 		customerFindResult.setTelephone(customerUpdate[1]);
 		customerList.add(customerFindResult);
@@ -181,11 +184,12 @@ public class CustomerModel {
 		String[] customerFind = new String[1];
 		customerFind[0] = customerAccount[0];
 		Customer customerFindResult = null;
-		customerFindResult = stringToList(findCustomer(customerFind).getCustomerSet()).get(0);
-		if (customerFindResult == null) {
+		
+		if (findCustomer(customerFind).getCustomerSet()==null) {
 			package1.setResult("customer account in not find");
 			return package1;
 		}
+		customerFindResult = stringToList(findCustomer(customerFind).getCustomerSet()).get(0);
 		customerList.remove(point);
 		
 		int shouldGet=customerFindResult.getShould_get()-Integer.parseInt(customerAccount[1]);
@@ -210,11 +214,12 @@ public class CustomerModel {
 		String[] customerFind = new String[1];
 		customerFind[0] = customerAccount[0];
 		Customer customerFindResult = null;
-		customerFindResult = stringToList(findCustomer(customerFind).getCustomerSet()).get(0);
-		if (customerFindResult == null) {
+		
+		if (findCustomer(customerFind).getCustomerSet()==null) {
 			package1.setResult("customer account out not find");
 			return package1;
 		}
+		customerFindResult = stringToList(findCustomer(customerFind).getCustomerSet()).get(0);
 		customerList.remove(point);
 		
 		int shouldPay=customerFindResult.getShould_pay()-Integer.parseInt(customerAccount[1]);
@@ -239,11 +244,12 @@ public class CustomerModel {
 		String[] customerFind = new String[1];
 		customerFind[0] = customerImportAdd[0];
 		Customer customerFindResult = null;
-		customerFindResult = stringToList(findCustomer(customerFind).getCustomerSet()).get(0);
-		if (customerFindResult == null) {
+		
+		if (findCustomer(customerFind).getCustomerSet()==null) {
 			package1.setResult("customer import add not find");
 			return package1;
 		}
+		customerFindResult = stringToList(findCustomer(customerFind).getCustomerSet()).get(0);
 		customerList.remove(point);
 		
 		int shouldPay=customerFindResult.getShould_pay()
@@ -269,11 +275,12 @@ public class CustomerModel {
 		String[] customerFind = new String[1];
 		customerFind[0] = customerImportDel[0];
 		Customer customerFindResult = null;
-		customerFindResult = stringToList(findCustomer(customerFind).getCustomerSet()).get(0);
-		if (customerFindResult == null) {
+		
+		if ( findCustomer(customerFind).getCustomerSet()==null) {
 			package1.setResult("customer import del not find");
 			return package1;
 		}
+		customerFindResult = stringToList(findCustomer(customerFind).getCustomerSet()).get(0);
 		customerList.remove(point);
 		
 		int shouldPay=customerFindResult.getShould_pay()
@@ -298,11 +305,12 @@ public class CustomerModel {
 		String[] customerFind = new String[1];
 		customerFind[0] = customerExportAdd[0];
 		Customer customerFindResult = null;
-		customerFindResult = stringToList(findCustomer(customerFind).getCustomerSet()).get(0);
-		if (customerFindResult == null) {
+		
+		if (findCustomer(customerFind).getCustomerSet()==null) {
 			package1.setResult("customer export add not find");
 			return package1;
 		}
+		customerFindResult = stringToList(findCustomer(customerFind).getCustomerSet()).get(0);
 		customerList.remove(point);
 		
 		int shouldGet=customerFindResult.getShould_pay()
@@ -328,11 +336,12 @@ public class CustomerModel {
 		String[] customerFind = new String[1];
 		customerFind[0] = customerExportDel[0];
 		Customer customerFindResult = null;
-		customerFindResult = stringToList(findCustomer(customerFind).getCustomerSet()).get(0);
-		if (customerFindResult == null) {
+		
+		if (findCustomer(customerFind).getCustomerSet()==null) {
 			package1.setResult("customer export del not find");
 			return package1;
 		}
+		customerFindResult = stringToList(findCustomer(customerFind).getCustomerSet()).get(0);
 		customerList.remove(point);
 		
 		int shouldGet=customerFindResult.getShould_pay()
